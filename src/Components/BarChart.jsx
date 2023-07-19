@@ -42,7 +42,7 @@ const BarChart = () => {
       };
 
       setData(newData);
-    }, 1000);
+    }, 100000);
 
     // Clean up the interval on component unmount
     return () => clearInterval(interval);

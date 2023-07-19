@@ -4,15 +4,18 @@ import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { ThemeProvider, createTheme } from '@mui/material'
-
+import { Provider } from 'react-redux'
+import store from './Redux/store/index'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 const theme = createTheme()
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
       <ThemeProvider theme={theme}>
         <App />
       </ThemeProvider>
+    </Provider>
   </React.StrictMode>
 )
 
