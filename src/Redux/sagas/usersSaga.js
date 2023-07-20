@@ -1,15 +1,11 @@
-// src/redux/usersSaga.js
 import { call, put, takeEvery } from 'redux-saga/effects'
-import axios from 'axios'
 import { fetchUsersSuccess, fetchUsersFailure } from '../actions/usersActions'
 import { FETCH_USERS_REQUEST } from '../types'
+import api from '../../Api'
 
 function* fetchUsers () {
   try {
-    const response = yield call(
-      axios.get,
-      'https://jsonplaceholder.typicode.com/users'
-    )
+    const response = yield call(api.get, '/users')
     yield put(fetchUsersSuccess(response.data))
   } catch (error) {
     yield put(fetchUsersFailure(error.message))

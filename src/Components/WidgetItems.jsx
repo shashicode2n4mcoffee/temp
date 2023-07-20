@@ -19,18 +19,28 @@ const WidgetItems = () => {
         flexDirection: "column",
         alignItems: "center",
         width: "100%",
-        color:"white"
+        color: "white",
       }}
     >
-      <Typography variant="h4" style={{ cursor:"pointer"}}>
-        <FontAwesomeIcon icon={faPlus} style={{color:"white",paddingRight:".5rem"}}/>
+      <Typography variant="h4" style={{ cursor: "pointer" }}>
+        <FontAwesomeIcon
+          icon={faPlus}
+          style={{ color: "white", paddingRight: ".5rem" }}
+        />
         Add a Widget
       </Typography>
       <List>
         {WIDGET_ITEMS.map((widget, index) => (
           <ListItem key={index}>
-            <FontAwesomeIcon icon={faPlus} style={{color:"white"}}/>
-            <ListItemText primary={widget.key} style={{paddingLeft:".5rem", color:"white", cursor:"pointer"}} />
+            <FontAwesomeIcon icon={faPlus} style={{ color: "white" }} />
+            <ListItemText
+              primary={widget.key}
+              style={{
+                paddingLeft: ".5rem",
+                color: "white",
+                cursor: "pointer",
+              }}
+            />
           </ListItem>
         ))}
       </List>

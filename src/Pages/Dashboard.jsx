@@ -1,7 +1,7 @@
 import Widget from "../Components/Widget";
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { fetchUsersRequest } from '../Redux/actions/usersActions';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { fetchUsersRequest } from "../Redux/actions/usersActions";
 import { styled } from "@mui/system";
 import { Container, Grid, Paper, Typography } from "@mui/material";
 import LineGraph from "../Components/LineGraph";
@@ -12,6 +12,11 @@ import TimeComponent from "../Components/TimeComponent";
 import WidgetItems from "../Components/WidgetItems";
 import Sidebar from "../Components/Sidebar";
 import { useSelector, useDispatch } from "react-redux";
+import { EventDashboard } from "../Components/EventDashboard";
+import { LineCharts } from "../Components/SentimentsChart";
+import CategoriesBarChart from "../Components/CategoriesBarChart";
+import TimeMove from "../Components/TimeMove";
+import ChartDataModal from "../Components/ChartDataModal";
 
 const DashboardContainer = styled(Container)(({ theme }) => ({
   marginTop: theme.spacing(4),
@@ -25,94 +30,66 @@ const DashboardPaper = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
 }));
 
-const Dashboard = ({ users, loading, error, fetchUsers }) => {
-  useEffect(() => {
-    fetchUsers();
-  }, [fetchUsers]);
+const events = [
+  {
+    title: "India is growing",
+    status: "ANNOUNCED",
+    action: "Summary",
+    time: "Fri Dec 10 2023 05:30 GMT+0530",
+  },
+  {
+    title: "India is growing",
+    status: "ANNOUNCED",
+    action: "Summary",
+    time: "Fri Dec 11 2023 05:30 GMT+0530",
+  },
+];
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+const Dashboard = () => {
   return (
-    <div>
-      <h1>User List</h1>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>{user.name}</li>
-        ))}
-      </ul>
+    <div style={{ display: "flex" }}>
+      <DashboardContainer maxWidth="xl">
+        <Grid container>
+          <Grid item xs={2}>
+            <Navbar />
+          </Grid>
+          <Grid
+            container
+            direction="row"
+            spacing={1}
+            sx={{ marginTop: "60px" }}
+          >
+            <Grid item xs={12} sm={12} md={12}>
+              <Grid item>
+                <Widget>
+                  <TradingViewWidget />
+                </Widget>
+              </Grid>
+              <Grid item>
+                <Widget>
+                  {/* <BarChart /> */}
+                  {/* <TimeMove /> */}
+                </Widget>
+              </Grid>
+              <Grid item>
+                <Widget>
+                  <LineCharts />
+                </Widget>
+              </Grid>
+              <Grid item>
+                <Widget>
+                  {/* <TimeComponent /> */}
+                  {/* <EventDashboard date={new Date()} events={events} /> */}
+                  {/* <LineCharts /> */}
+                  <CategoriesBarChart />
+                </Widget>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </DashboardContainer>
     </div>
-    // <div style={{ display: "flex" }}>
-    //   {/* <div
-    //     style={{
-    //       width: "5rem",
-    //       backgroundColor: "white",
-    //       height: "100vh",
-    //       zIndex: "10",
-    //       backgroundColor: "#7B7A7A",
-    //       position:"fixed"
-    //     }}
-    //   ></div>
-    //    <div
-    //     style={{
-    //       width: "5rem",
-    //       backgroundColor: "white",
-    //       height: "100vh",
-    //       zIndex: "10",
-    //       backgroundColor: "#7B7A7A",
-    //     }}
-    //   ></div> */}
-    //   <DashboardContainer maxWidth="xl">
-    //     <Grid container>
-    //       <Grid item xs={2}>
-    //         <Navbar />
-    //       </Grid>
-    //       <Grid
-    //         container
-    //         direction="row"
-    //         spacing={1}
-    //         sx={{ marginTop: "60px" }}
-    //       >
-    //         <Grid item xs={12} sm={12} md={12}>
-    //           <Widget>
-    //             <TradingViewWidget />
-    //           </Widget>
-    //           <Grid item>
-    //             <Widget>
-    //               <BarChart />
-    //             </Widget>
-    //           </Grid>
-    //           <Grid item>
-    //             <Widget>
-    //               <LineGraph />
-    //             </Widget>
-    //           </Grid>
-    //           <Grid item>
-    //             <Widget>
-    //               {/* <TimeComponent /> */}
-    //               <WidgetItems />
-    //             </Widget>
-    //           </Grid>
-    //         </Grid>
-    //       </Grid>
-    //     </Grid>
-    //   </DashboardContainer>
-    // </div>
   );
 };
 
-const mapStateToProps = (state) => ({
-  users: state.users.users,
-  loading: state.users.loading,
-  error: state.users.error,
-});
-
-const mapDispatchToProps = {
-  fetchUsers: fetchUsersRequest,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default Dashboard;

@@ -1,0 +1,8 @@
+.MuiStack-root.events-card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 12px;
+    height: 100%;
+}

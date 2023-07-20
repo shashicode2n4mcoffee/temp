@@ -4,42 +4,43 @@ import ReactDOM from "react-dom";
 import "chart.js/auto";
 import TooltipContent from "./TooltipContent";
 
+const findSentiment = (value) => {
+  if (value < 33) return "red";
+  if (value > 66) return "green";
+  return "orange";
+};
+const labelsValues = [10, 70, 56];
+const dataPoints = [10, 30, 50];
+const backgroundColorValues = dataPoints.map((item) => findSentiment(item));
+
 const BarChart = () => {
   const [data, setData] = useState({
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+    labels: labelsValues,
     datasets: [
       {
         label: "Bar Chart Example",
-        data: [12, 19, 30, 5, 2, 3],
-        backgroundColor: [
-          "rgba(255, 99, 71, 0.6)", // Red
-          "rgba(255, 165, 0, 0.6)", // Orange
-          "rgba(255, 165, 0, 0.6)", // Orange
-          "rgba(54, 162, 235, 0.6)", // Blue
-          "rgba(255, 99, 71, 0.6)", // Red
-          "rgba(255, 99, 71, 0.6)", // Red
-        ],
+        data: dataPoints,
+        backgroundColor: backgroundColorValues,
       },
     ],
   });
 
-  useEffect(()=>{
-    
-  },[])
+  useEffect(() => {}, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Generate new random data with one less bar
+      const rand = Math.floor(Math.random() * 100);
       const newData = {
-        labels: [...data.labels,Math.floor(Math.random()*100)],
+        labels: [...data.labels, Math.floor(Math.random() * 100)],
         datasets: [
           {
             ...data.datasets[0],
-            data: [...data.datasets[0].data, Math.floor(Math.random()*100)],
-            backgroundColor: [...data.datasets[0].backgroundColor, "red"],
+            data: [...dataPoints, rand],
+            backgroundColor: [...backgroundColorValues, findSentiment(rand)],
           },
         ],
       };
+      console.info(newData);
 
       setData(newData);
     }, 100000);
@@ -66,9 +67,8 @@ const BarChart = () => {
               <TooltipContent value={value} label={data.labels[index]} />
             );
 
-            const tooltipElement = chart.canvas.parentNode.querySelector(
-              "#custom-tooltip"
-            );
+            const tooltipElement =
+              chart.canvas.parentNode.querySelector("#custom-tooltip");
 
             if (tooltipElement) {
               ReactDOM.render(tooltipContent, tooltipElement);
@@ -76,17 +76,19 @@ const BarChart = () => {
 
               // Position the tooltip relative to the chart
               const position = chart.canvas.getBoundingClientRect();
-              tooltipElement.style.left =
-                position.left + tooltip.caretX + "px";
+              tooltipElement.style.left = position.left + tooltip.caretX + "px";
               tooltipElement.style.top =
                 position.top + tooltip.caretY + 200 + "px";
 
-                console.log('====',position.left + tooltip.caretX, position.top + tooltip.caretY )
+              console.log(
+                "====",
+                position.left + tooltip.caretX,
+                position.top + tooltip.caretY
+              );
             }
           } else {
-            const tooltipElement = chart.canvas.parentNode.querySelector(
-              "#custom-tooltip"
-            );
+            const tooltipElement =
+              chart.canvas.parentNode.querySelector("#custom-tooltip");
 
             if (tooltipElement) {
               ReactDOM.unmountComponentAtNode(tooltipElement);
@@ -100,13 +102,13 @@ const BarChart = () => {
 
   const chartStyle = {
     backgroundColor: "black",
-    width:"100%"
+    width: "100%",
   };
 
   const tooltipRef = useRef(null);
 
   return (
-    <div style={{height:"400px", backgroundColor:"black"}}>
+    <div style={{ height: "400px", backgroundColor: "black" }}>
       <div
         id="custom-tooltip"
         ref={tooltipRef}

@@ -19,7 +19,7 @@ const TradingViewWidget = () => {
         details: true,
         calendar: true,
         container_id: "tradingview_0dabd",
-        height:"400px"
+        height: "400px",
       }}
     />
   );

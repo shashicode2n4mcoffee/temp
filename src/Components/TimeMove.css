@@ -1,0 +1,14 @@
+.time-move {
+    width: 100%;
+    height: 400px;
+}
+
+.past {
+    width: calc(50% + var(--time-move));
+    background-color: red;
+}
+
+.future {
+    width: calc(50% - var(--time-move));
+    background-color: blue;
+}
