@@ -1,0 +1,22 @@
+.time-container {
+    display: flex;
+}
+
+.time-slot {
+    flex: 1;
+    text-align: center;
+    padding: 5px;
+    height: 400px;
+}
+
+.past {
+    background-color: #050505;
+}
+
+.present {
+    background-color: #ffd700;
+}
+
+.future {
+    background-color: #3eeb0f;
+}

@@ -17,6 +17,7 @@ import { LineCharts } from "../Components/SentimentsChart";
 import CategoriesBarChart from "../Components/CategoriesBarChart";
 import TimeMove from "../Components/TimeMove";
 import ChartDataModal from "../Components/ChartDataModal";
+import EventTime from "../Components/EventTime";
 
 const DashboardContainer = styled(Container)(({ theme }) => ({
   marginTop: theme.spacing(4),
@@ -69,6 +70,7 @@ const Dashboard = () => {
                 <Widget>
                   {/* <BarChart /> */}
                   {/* <TimeMove /> */}
+                  <EventTime />
                 </Widget>
               </Grid>
               <Grid item>
