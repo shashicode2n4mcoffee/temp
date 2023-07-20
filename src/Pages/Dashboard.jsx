@@ -1,23 +1,14 @@
 import Widget from "../Components/Widget";
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { fetchUsersRequest } from "../Redux/actions/usersActions";
+import React, { useState } from "react";
 import { styled } from "@mui/system";
-import { Container, Grid, Paper, Typography } from "@mui/material";
-import LineGraph from "../Components/LineGraph";
-import BarChart from "../Components/BarChart";
+import { Container, Grid, Paper } from "@mui/material";
 import TradingViewWidget from "../Components/TradingViewWidget";
 import Navbar from "../Components/Navbar";
-import TimeComponent from "../Components/TimeComponent";
 import WidgetItems from "../Components/WidgetItems";
-import Sidebar from "../Components/Sidebar";
-import { useSelector, useDispatch } from "react-redux";
-import { EventDashboard } from "../Components/EventDashboard";
 import { LineCharts } from "../Components/SentimentsChart";
 import CategoriesBarChart from "../Components/CategoriesBarChart";
-import TimeMove from "../Components/TimeMove";
-import ChartDataModal from "../Components/ChartDataModal";
 import EventTime from "../Components/EventTime";
+import { EventDashboard } from "../Components/EventDashboard";
 
 const DashboardContainer = styled(Container)(({ theme }) => ({
   marginTop: theme.spacing(4),
@@ -47,6 +38,13 @@ const events = [
 ];
 
 const Dashboard = () => {
+  const [widget, setWidget] = useState({
+    tradingView: false,
+    mediaSignal: false,
+    sentimentSignal: false,
+    eventDashboard: false,
+  });
+
   return (
     <div style={{ display: "flex" }}>
       <DashboardContainer maxWidth="xl">
@@ -63,27 +61,31 @@ const Dashboard = () => {
             <Grid item xs={12} sm={12} md={12}>
               <Grid item>
                 <Widget>
-                  <TradingViewWidget />
+                  {!widget.tradingView ? (
+                    <TradingViewWidget />
+                  ) : (
+                    <WidgetItems setWidget={setWidget} />
+                  )}
                 </Widget>
               </Grid>
               <Grid item>
                 <Widget>
-                  {/* <BarChart /> */}
-                  {/* <TimeMove /> */}
-                  <EventTime />
+                  {!widget.sentimentSignal ? <LineCharts /> : <WidgetItems />}
                 </Widget>
               </Grid>
               <Grid item>
                 <Widget>
-                  <LineCharts />
+                  {!widget.mediaSignal ? (
+                    <CategoriesBarChart />
+                  ) : (
+                    <WidgetItems />
+                  )}
                 </Widget>
               </Grid>
               <Grid item>
                 <Widget>
-                  {/* <TimeComponent /> */}
+                  {!widget.eventDashboard ? <EventTime /> : <WidgetItems />}
                   {/* <EventDashboard date={new Date()} events={events} /> */}
-                  {/* <LineCharts /> */}
-                  <CategoriesBarChart />
                 </Widget>
               </Grid>
             </Grid>

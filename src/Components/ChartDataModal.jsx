@@ -31,14 +31,20 @@ const ChartDataModal = ({ open, setOpen }) => {
           }}
         >
           <Typography variant="h5" gutterBottom>
-            Modal Title
+            Nasdaq is almost ATH
           </Typography>
           <Typography variant="body1">
-            This is the content of the modal.
+            U.S. shares higher at close of trade; Dow Jones Industrial Average
+            up 0.31%
           </Typography>
-          <Button variant="contained" onClick={handleClose}>
-            Close
-          </Button>
+          <Box sx={{ marginTop: "1rem" }}>
+            <Button variant="contained" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="contained" sx={{ marginLeft: "1rem" }}>
+              Like
+            </Button>
+          </Box>
         </Box>
       </Modal>
     </div>

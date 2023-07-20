@@ -52,7 +52,7 @@ export const LineCharts = () => {
       },
       toolbox: {
         feature: {
-          saveAsImage: {},
+          // saveAsImage: {},
         },
       },
       grid: {

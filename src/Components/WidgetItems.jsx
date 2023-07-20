@@ -10,7 +10,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { WIDGET_ITEMS } from "../Configs/widget-items";
 
-const WidgetItems = () => {
+const WidgetItems = ({ setWidget }) => {
+  const onHandleClick = (widget) => {
+    console.log("=====WIDGET=====", widget);
+  };
+
   return (
     <div
       style={{
@@ -31,7 +35,7 @@ const WidgetItems = () => {
       </Typography>
       <List>
         {WIDGET_ITEMS.map((widget, index) => (
-          <ListItem key={index}>
+          <ListItem key={index} onClick={() => onHandleClick(widget)}>
             <FontAwesomeIcon icon={faPlus} style={{ color: "white" }} />
             <ListItemText
               primary={widget.key}

@@ -6,11 +6,11 @@ const EventCard = () => {
     <Card>
       <CardContent>
         <Typography variant="h5" component="div">
-          Card Title
+          Nasdaq is almost ATH
         </Typography>
         <Typography variant="body2">
-          This is the content of the card. You can put any text or other
-          components here.
+          U.S. shares higher at close of trade; Dow Jones Industrial Average up
+          0.31%
         </Typography>
       </CardContent>
     </Card>

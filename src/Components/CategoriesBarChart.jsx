@@ -47,7 +47,6 @@ const CategoriesBarChart = ({ fetchUsers }) => {
         },
       });
     }
-    console.log("2", filteredData);
     return filteredData;
   }, []);
 
