@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 let tvScriptLoadingPromise;
 
-const TradingViewWidget = ({ seletcedSymbol }) => {
+const TradingViewWidget = ({ seletcedSymbol, selectedTime }) => {
   const onLoadScriptRef = useRef();
 
   useEffect(() => {
@@ -30,14 +30,13 @@ const TradingViewWidget = ({ seletcedSymbol }) => {
     return () => (onLoadScriptRef.current = null);
 
     function createWidget() {
-      console.info("====SELECTED SYMBOL====", seletcedSymbol);
       if (
         document.getElementById("tradingview_e3e5b") &&
         "TradingView" in window
       ) {
         new window.TradingView.widget({
-          symbol: seletcedSymbol,
-          interval: "D",
+          symbol: seletcedSymbol || "USDEUR",
+          interval: selectedTime || "1D",
           timezone: "Asia/Kolkata",
           theme: "dark",
           style: "1",
@@ -55,7 +54,7 @@ const TradingViewWidget = ({ seletcedSymbol }) => {
         });
       }
     }
-  }, [seletcedSymbol]);
+  }, [seletcedSymbol, selectedTime]);
 
   return (
     <Box className="tradingview-widget-container" sx={{ height: "400px" }}>

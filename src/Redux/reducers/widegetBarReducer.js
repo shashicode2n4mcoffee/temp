@@ -3,7 +3,9 @@ import { TIMEFRAME } from '../../Configs/timeframe'
 import {
   FETCH_WIDGETDETAILS_SELECTED_SYMBOL_REQUEST,
   FETCH_WIDGETDETAILS_SELECTED_SYMBOL_SUCCESS,
-  FETCH_WIDGETDETAILS_SELECTED_SYMBOL_FAILURE
+  FETCH_WIDGETDETAILS_SELECTED_SYMBOL_FAILURE,
+  FETCH_WIDGETDETAILS_SELECTED_TIME_SUCCESS,
+  FETCH_WIDGETDETAILS_SELECTED_TIME_FAILURE
 } from '../types'
 
 const initialState = {
@@ -30,6 +32,24 @@ const widgetBarReducer = (state = initialState, action) => {
         seletcedSymbol: action.payload
       }
     case FETCH_WIDGETDETAILS_SELECTED_SYMBOL_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      }
+    case FETCH_WIDGETDETAILS_SELECTED_SYMBOL_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null
+      }
+    case FETCH_WIDGETDETAILS_SELECTED_TIME_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        selectedTime: action.payload
+      }
+    case FETCH_WIDGETDETAILS_SELECTED_TIME_FAILURE:
       return {
         ...state,
         loading: false,

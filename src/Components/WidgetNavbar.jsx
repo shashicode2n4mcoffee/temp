@@ -12,10 +12,17 @@ import {
 import NavbarDrawer from "./NavbarDrawer";
 import { TIMEFRAME } from "../Configs/timeframe";
 import { CURRENCIES } from "../Configs/currencies";
-import { fetchWidgetBarSelectedSymbolRequest } from "../Redux/actions/widgetBarActions";
+import {
+  fetchWidgetBarSelectedSymbolRequest,
+  fetchWidgetBarSelectedTimeRequest,
+} from "../Redux/actions/widgetBarActions";
 import { connect } from "react-redux";
 
-const WidgetNavbar = ({ fetchWidgetBarSelectedSymbolRequest }) => {
+const WidgetNavbar = ({
+  fetchWidgetBarSelectedSymbolRequest,
+  fetchWidgetBarSelectedTimeRequest,
+  selectedTime,
+}) => {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const [selectedCurrency, setSelectedCurrency] = useState("EURUSD");
   const [anchorEl, setAnchorEl] = useState(null);
@@ -32,6 +39,14 @@ const WidgetNavbar = ({ fetchWidgetBarSelectedSymbolRequest }) => {
     setSelectedCurrency(currency);
     fetchWidgetBarSelectedSymbolRequest(currency);
     setAnchorEl(null);
+  };
+
+  const handleTimeSelect = (time) => {
+    console.log(
+      "=====SELECTED TIME======",
+      fetchWidgetBarSelectedTimeRequest(time)
+    );
+    fetchWidgetBarSelectedTimeRequest(time);
   };
 
   return (
@@ -81,7 +96,10 @@ const WidgetNavbar = ({ fetchWidgetBarSelectedSymbolRequest }) => {
                   "&.Mui-focusVisible": {
                     backgroundColor: "#9B9C9C",
                   },
+                  backgroundColor:
+                    timeframe?.time === selectedTime && "#9B9C9C",
                 }}
+                onClick={() => handleTimeSelect(timeframe)}
               >
                 {timeframe?.time}
               </Button>
@@ -96,13 +114,14 @@ const WidgetNavbar = ({ fetchWidgetBarSelectedSymbolRequest }) => {
 };
 
 const mapStateToProps = (state) => ({
-  users: state.users.users,
-  loading: state.users.loading,
-  error: state.users.error,
+  selectedTime: state.widgetsBar?.selectedTime,
+  loading: state.widgetsBar.loading,
+  error: state.widgetsBar.error,
 });
 
 const mapDispatchToProps = {
   fetchWidgetBarSelectedSymbolRequest: fetchWidgetBarSelectedSymbolRequest,
+  fetchWidgetBarSelectedTimeRequest: fetchWidgetBarSelectedTimeRequest,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(WidgetNavbar);

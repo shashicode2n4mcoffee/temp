@@ -60,7 +60,7 @@ const Dashboard = () => {
             container
             direction="row"
             spacing={1}
-            sx={{ marginTop: "60px" }}
+            sx={{ marginTop: "90px" }}
           >
             <Grid item xs={12} sm={12} md={12}>
               <Grid item>

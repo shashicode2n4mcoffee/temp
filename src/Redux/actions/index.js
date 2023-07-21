@@ -6,7 +6,10 @@ import {
 import {
   fetchWidgetBarSelectedSymbolFailure,
   fetchWidgetBarSelectedSymbolSuccess,
-  fetchWidgetBarSelectedSymbolRequest
+  fetchWidgetBarSelectedSymbolRequest,
+  fetchWidgetBarSelectedTimeRequest,
+  fetchWidgetBarSelectedTimeSuccess,
+  fetchWidgetBarSelectedTimeFailure
 } from './widgetBarActions'
 
 export default {
@@ -15,5 +18,8 @@ export default {
   fetchUsersRequest,
   fetchWidgetBarSelectedSymbolFailure,
   fetchWidgetBarSelectedSymbolSuccess,
-  fetchWidgetBarSelectedSymbolRequest
+  fetchWidgetBarSelectedSymbolRequest,
+  fetchWidgetBarSelectedTimeRequest,
+  fetchWidgetBarSelectedTimeSuccess,
+  fetchWidgetBarSelectedTimeFailure
 }

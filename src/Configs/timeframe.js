@@ -12,9 +12,9 @@ export const TIMEFRAME = [
     time: '3M'
   },
   {
-    time: '1Y'
+    time: '6M'
   },
   {
-    time: '5Y'
+    time: '12M'
   }
 ]
