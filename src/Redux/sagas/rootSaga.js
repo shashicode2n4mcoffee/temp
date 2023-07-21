@@ -1,6 +1,6 @@
 import { all } from 'redux-saga/effects'
-import { usersSaga } from '../sagas'
+import { usersSaga, widgetBarSaga } from './index'
 
 export function* rootSaga () {
-  yield all([usersSaga()])
+  yield all([usersSaga(), widgetBarSaga()])
 }

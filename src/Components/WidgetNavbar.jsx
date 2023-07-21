@@ -12,8 +12,10 @@ import {
 import NavbarDrawer from "./NavbarDrawer";
 import { TIMEFRAME } from "../Configs/timeframe";
 import { CURRENCIES } from "../Configs/currencies";
+import { fetchWidgetBarSelectedSymbolRequest } from "../Redux/actions/widgetBarActions";
+import { connect } from "react-redux";
 
-const WidgetNavbar = () => {
+const WidgetNavbar = ({ fetchWidgetBarSelectedSymbolRequest }) => {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const [selectedCurrency, setSelectedCurrency] = useState("EURUSD");
   const [anchorEl, setAnchorEl] = useState(null);
@@ -28,7 +30,8 @@ const WidgetNavbar = () => {
 
   const handleCurrencySelect = (currency) => {
     setSelectedCurrency(currency);
-    setAnchorEl(null); // Close the dropdown after selection
+    fetchWidgetBarSelectedSymbolRequest(currency);
+    setAnchorEl(null);
   };
 
   return (
@@ -92,4 +95,14 @@ const WidgetNavbar = () => {
   );
 };
 
-export default WidgetNavbar;
+const mapStateToProps = (state) => ({
+  users: state.users.users,
+  loading: state.users.loading,
+  error: state.users.error,
+});
+
+const mapDispatchToProps = {
+  fetchWidgetBarSelectedSymbolRequest: fetchWidgetBarSelectedSymbolRequest,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(WidgetNavbar);

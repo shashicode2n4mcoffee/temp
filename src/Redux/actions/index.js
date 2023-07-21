@@ -3,9 +3,17 @@ import {
   fetchUsersSuccess,
   fetchUsersRequest
 } from './usersActions'
+import {
+  fetchWidgetBarSelectedSymbolFailure,
+  fetchWidgetBarSelectedSymbolSuccess,
+  fetchWidgetBarSelectedSymbolRequest
+} from './widgetBarActions'
 
 export default {
   fetchUsersFailure,
   fetchUsersSuccess,
-  fetchUsersRequest
+  fetchUsersRequest,
+  fetchWidgetBarSelectedSymbolFailure,
+  fetchWidgetBarSelectedSymbolSuccess,
+  fetchWidgetBarSelectedSymbolRequest
 }

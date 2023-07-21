@@ -113,7 +113,6 @@ const CategoriesBarChart = ({ fetchUsers }) => {
           },
         ],
       };
-      console.log("3", options);
 
       setBarchartOptions(options);
     },
@@ -124,7 +123,6 @@ const CategoriesBarChart = ({ fetchUsers }) => {
     const interval = setInterval(() => {
       const randomValue = Math.floor(Math.random() * 100);
       let simulateData = data.slice();
-      console.info("=====SIMULATED DATA==== ", simulateData);
       simulateData.shift();
       simulateData = [
         ...data,
@@ -136,7 +134,7 @@ const CategoriesBarChart = ({ fetchUsers }) => {
       ];
 
       getOptions(simulateData);
-    }, 1000);
+    }, 100000);
 
     return () => clearInterval(interval);
   }, []);
