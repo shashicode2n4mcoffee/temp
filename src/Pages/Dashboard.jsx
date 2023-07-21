@@ -9,6 +9,7 @@ import { LineCharts } from "../Components/SentimentsChart";
 import CategoriesBarChart from "../Components/CategoriesBarChart";
 import EventTime from "../Components/EventTime";
 import { EventDashboard } from "../Components/EventDashboard";
+import WidgetNavbar from "../Components/WidgetNavbar";
 
 const DashboardContainer = styled(Container)(({ theme }) => ({
   marginTop: theme.spacing(4),
@@ -51,6 +52,9 @@ const Dashboard = () => {
         <Grid container>
           <Grid item xs={2}>
             <Navbar />
+          </Grid>
+          <Grid item xs={2}>
+            <WidgetNavbar />
           </Grid>
           <Grid
             container
