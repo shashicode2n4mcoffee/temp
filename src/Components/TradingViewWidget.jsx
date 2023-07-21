@@ -1,11 +1,11 @@
 import { Box } from "@mui/system";
 import React, { useEffect, useState, useRef } from "react";
 import { AdvancedChart } from "react-tradingview-embed";
+import { connect } from "react-redux";
 
 let tvScriptLoadingPromise;
 
-const TradingViewWidget = () => {
-  const [symbolValue, setSymbolValue] = useState("EURUSD");
+const TradingViewWidget = ({ seletcedSymbol }) => {
   const onLoadScriptRef = useRef();
 
   useEffect(() => {
@@ -30,12 +30,13 @@ const TradingViewWidget = () => {
     return () => (onLoadScriptRef.current = null);
 
     function createWidget() {
+      console.info("====SELECTED SYMBOL====", seletcedSymbol);
       if (
         document.getElementById("tradingview_e3e5b") &&
         "TradingView" in window
       ) {
         new window.TradingView.widget({
-          symbol: symbolValue,
+          symbol: seletcedSymbol,
           interval: "D",
           timezone: "Asia/Kolkata",
           theme: "dark",
@@ -54,7 +55,7 @@ const TradingViewWidget = () => {
         });
       }
     }
-  }, []);
+  }, [seletcedSymbol]);
 
   return (
     <Box className="tradingview-widget-container" sx={{ height: "400px" }}>
@@ -63,4 +64,11 @@ const TradingViewWidget = () => {
   );
 };
 
-export default TradingViewWidget;
+const mapStateToProps = (state) => ({
+  seletcedSymbol: state.widgetsBar?.seletcedSymbol,
+  selectedTime: state.widgetsBar?.selectedTime,
+  loading: state.widgetsBar.loading,
+  error: state.widgetsBar.error,
+});
+
+export default connect(mapStateToProps)(TradingViewWidget);

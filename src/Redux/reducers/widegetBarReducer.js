@@ -1,3 +1,5 @@
+import { CURRENCIES } from '../../Configs/currencies'
+import { TIMEFRAME } from '../../Configs/timeframe'
 import {
   FETCH_WIDGETDETAILS_SELECTED_SYMBOL_REQUEST,
   FETCH_WIDGETDETAILS_SELECTED_SYMBOL_SUCCESS,
@@ -6,9 +8,10 @@ import {
 
 const initialState = {
   loading: false,
-  seletcedSymbol: 'EURUSD',
-  symbolList: [],
-  timeFrames: [],
+  seletcedSymbol: CURRENCIES[0],
+  selectedTime: TIMEFRAME[0].time,
+  symbolList: CURRENCIES,
+  timeFrames: TIMEFRAME,
   error: null
 }
 
