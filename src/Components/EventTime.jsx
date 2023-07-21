@@ -1,18 +1,19 @@
 import "../Styles/EventTime.css";
 import React, { useState, useEffect } from "react";
 import { EventCard } from "./EventCard";
+
 const events = [
   {
     title: "India is growing",
     status: "ANNOUNCED",
     action: "Summary",
-    time: "Fri Dec 10 2023 05:30 GMT+0530",
+    time: new Date("2023-12-10T05:30:00.000Z"),
   },
   {
     title: "India is growing",
     status: "ANNOUNCED",
     action: "Summary",
-    time: "Fri Dec 11 2023 05:30 GMT+0530",
+    time: new Date("2023-12-11T05:30:00.000Z"),
   },
 ];
 
@@ -53,12 +54,18 @@ const EventTime = () => {
             className += " present";
           }
 
+          const eventsForHour = events.filter((event) => {
+            return event.time.getHours() === hour;
+          });
+
           return (
             <div key={hour} className={className}>
-              {/* {events.map((eventDetails, index) => {
-                return <EventCard event={eventDetails} key={index} />;
-              })} */}
-              {hour}:00
+              <div className="hour">{hour}:00</div>
+              {eventsForHour.map((eventDetails, index) => {
+                return (
+                  <EventCard event={eventDetails} key={index} showTimeAndDate />
+                );
+              })}
             </div>
           );
         })}

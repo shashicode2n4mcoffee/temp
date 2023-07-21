@@ -9,24 +9,44 @@ const getColor = { positive: "green", negetive: "red", neutral: "orange" };
 const CategoriesBarChart = ({ fetchUsers }) => {
   const [data, setData] = useState([
     {
-      impact: 80,
+      impact: 30,
       sentiment: "positive",
       news: "News1",
     },
     {
-      impact: 10,
+      impact: 50,
       sentiment: "neutral",
-      news: "News1",
+      news: "News2",
     },
     {
-      impact: 60,
+      impact: 69,
       sentiment: "negetive",
-      news: "News1",
+      news: "News3",
     },
     {
       impact: 23,
       sentiment: "positive",
-      news: "News1",
+      news: "News4",
+    },
+    {
+      impact: 80,
+      sentiment: "positive",
+      news: "News5",
+    },
+    {
+      impact: 10,
+      sentiment: "neutral",
+      news: "News6",
+    },
+    {
+      impact: 60,
+      sentiment: "negetive",
+      news: "News7",
+    },
+    {
+      impact: 23,
+      sentiment: "positive",
+      news: "News8",
     },
   ]);
 
@@ -60,6 +80,10 @@ const CategoriesBarChart = ({ fetchUsers }) => {
   const getOptions = useCallback(
     (data) => {
       const options = {
+        title: {
+          text: "Media Signals",
+          left: "left",
+        },
         xAxis: {
           type: "category",
           data: getNews(data),
@@ -112,7 +136,7 @@ const CategoriesBarChart = ({ fetchUsers }) => {
       ];
 
       getOptions(simulateData);
-    }, 100000);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);
@@ -125,44 +149,44 @@ const CategoriesBarChart = ({ fetchUsers }) => {
   useEffect(() => {
     getOptions([
       {
-        impact: 80,
+        impact: 30,
         sentiment: "positive",
         news: "News1",
       },
       {
-        impact: 10,
+        impact: 50,
         sentiment: "neutral",
-        news: "News1",
+        news: "News2",
       },
       {
-        impact: 60,
+        impact: 69,
         sentiment: "negetive",
-        news: "News1",
+        news: "News3",
       },
       {
         impact: 23,
         sentiment: "positive",
-        news: "News1",
+        news: "News4",
       },
       {
         impact: 80,
         sentiment: "positive",
-        news: "News1",
+        news: "News5",
       },
       {
         impact: 10,
         sentiment: "neutral",
-        news: "News1",
+        news: "News6",
       },
       {
         impact: 60,
         sentiment: "negetive",
-        news: "News1",
+        news: "News7",
       },
       {
         impact: 23,
         sentiment: "positive",
-        news: "News1",
+        news: "News8",
       },
     ]);
   }, [getOptions, getData]);

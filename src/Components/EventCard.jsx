@@ -17,6 +17,7 @@ export const EventCard = ({ event }) => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
+        marginTop: "1rem",
       }}
     >
       <CardActionArea>

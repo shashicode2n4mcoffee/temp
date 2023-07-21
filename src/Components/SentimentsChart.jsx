@@ -34,7 +34,7 @@ export const LineCharts = () => {
         });
         return simulateData;
       });
-    }, 100000);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);
