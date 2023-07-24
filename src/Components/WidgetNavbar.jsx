@@ -9,7 +9,10 @@ import {
   Menu,
   MenuItem,
   Box,
+  IconButton,
 } from '@mui/material'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
+
 import NavbarDrawer from './NavbarDrawer'
 
 import { TIMEFRAME } from '../Configs/timeframe'
@@ -53,15 +56,16 @@ const WidgetNavbar = ({
   return (
     <AppBar position='fixed' sx={{ top: '4rem' }} className='widget-navbar'>
       <Toolbar className='widget-navbar-toolbar'>
-        <Button
+        <IconButton
           color='inherit'
           onClick={handleMenuOpen}
           aria-controls='currency-menu'
           aria-haspopup='true'
           component='div'
         >
-          {selectedCurrency}
-        </Button>
+          {selectedCurrency} <ArrowDropDownIcon />{' '}
+          {/* Add the ArrowDropDownIcon */}
+        </IconButton>
         <Menu
           id='currency-menu'
           anchorEl={anchorEl}
