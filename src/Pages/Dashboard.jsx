@@ -1,3 +1,5 @@
+import '../Styles/_variables.scss'
+
 import React, { useState } from 'react'
 import { styled } from '@mui/system'
 import { Container, Grid } from '@mui/material'
@@ -9,8 +11,6 @@ import WidgetItems from '../Components/WidgetItems'
 import { LineCharts } from '../Components/SentimentsChart'
 import CategoriesBarChart from '../Components/CategoriesBarChart'
 import EventTime from '../Components/EventTime'
-
-import '../Styles/_variables.scss'
 
 const DashboardContainer = styled(Container)(({ theme }) => ({
   marginTop: theme.spacing(4),

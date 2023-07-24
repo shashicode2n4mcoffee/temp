@@ -1,74 +1,69 @@
-import React, { useState } from "react";
+import '../Styles/WidgetNavbar.scss'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
 import {
   AppBar,
   Toolbar,
-  Typography,
   Button,
   useMediaQuery,
   Menu,
   MenuItem,
   Box,
-} from "@mui/material";
-import NavbarDrawer from "./NavbarDrawer";
-import { TIMEFRAME } from "../Configs/timeframe";
-import { CURRENCIES } from "../Configs/currencies";
+} from '@mui/material'
+import NavbarDrawer from './NavbarDrawer'
+
+import { TIMEFRAME } from '../Configs/timeframe'
+import { CURRENCIES } from '../Configs/currencies'
+
 import {
   fetchWidgetBarSelectedSymbolRequest,
   fetchWidgetBarSelectedTimeRequest,
-} from "../Redux/actions/widgetBarActions";
-import { connect } from "react-redux";
+} from '../Redux/actions/widgetBarActions'
 
 const WidgetNavbar = ({
   fetchWidgetBarSelectedSymbolRequest,
   fetchWidgetBarSelectedTimeRequest,
   selectedTime,
+  seletcedSymbol,
 }) => {
-  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
-  const [selectedCurrency, setSelectedCurrency] = useState("EURUSD");
-  const [anchorEl, setAnchorEl] = useState(null);
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down('sm'))
+  const [selectedCurrency, setSelectedCurrency] = useState(
+    seletcedSymbol || 'EURUSD'
+  )
+  const [anchorEl, setAnchorEl] = useState(null)
 
   const handleMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const handleMenuClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
 
   const handleCurrencySelect = (currency) => {
-    setSelectedCurrency(currency);
-    fetchWidgetBarSelectedSymbolRequest(currency);
-    setAnchorEl(null);
-  };
+    setSelectedCurrency(currency)
+    fetchWidgetBarSelectedSymbolRequest(currency)
+    setAnchorEl(null)
+  }
 
   const handleTimeSelect = (time) => {
-    console.log(
-      "=====SELECTED TIME======",
-      fetchWidgetBarSelectedTimeRequest(time)
-    );
-    fetchWidgetBarSelectedTimeRequest(time);
-  };
+    fetchWidgetBarSelectedTimeRequest(time)
+  }
 
   return (
-    <AppBar position="fixed" sx={{ top: "4rem", backgroundColor: "#7A7B7B" }}>
-      <Toolbar
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
+    <AppBar position='fixed' sx={{ top: '4rem' }} className='widget-navbar'>
+      <Toolbar className='widget-navbar-toolbar'>
         <Button
-          color="inherit"
+          color='inherit'
           onClick={handleMenuOpen}
-          aria-controls="currency-menu"
-          aria-haspopup="true"
-          component="div"
+          aria-controls='currency-menu'
+          aria-haspopup='true'
+          component='div'
         >
           {selectedCurrency}
         </Button>
         <Menu
-          id="currency-menu"
+          id='currency-menu'
           anchorEl={anchorEl}
           keepMounted
           open={Boolean(anchorEl)}
@@ -87,17 +82,17 @@ const WidgetNavbar = ({
           <Box>
             {TIMEFRAME.map((timeframe, index) => (
               <Button
-                color="inherit"
+                color='inherit'
                 key={index}
                 sx={{
-                  "&:hover": {
-                    backgroundColor: "#9B9C9C",
+                  '&:hover': {
+                    backgroundColor: '$hover-color',
                   },
-                  "&.Mui-focusVisible": {
-                    backgroundColor: "#9B9C9C",
+                  '&.Mui-focusVisible': {
+                    backgroundColor: '$hover-color',
                   },
                   backgroundColor:
-                    timeframe?.time === selectedTime && "#9B9C9C",
+                    timeframe?.time === selectedTime && '$hover-color',
                 }}
                 onClick={() => handleTimeSelect(timeframe)}
               >
@@ -110,18 +105,19 @@ const WidgetNavbar = ({
         )}
       </Toolbar>
     </AppBar>
-  );
-};
+  )
+}
 
 const mapStateToProps = (state) => ({
+  seletcedSymbol: state.widgetsBar?.seletcedSymbol,
   selectedTime: state.widgetsBar?.selectedTime,
   loading: state.widgetsBar.loading,
   error: state.widgetsBar.error,
-});
+})
 
 const mapDispatchToProps = {
   fetchWidgetBarSelectedSymbolRequest: fetchWidgetBarSelectedSymbolRequest,
   fetchWidgetBarSelectedTimeRequest: fetchWidgetBarSelectedTimeRequest,
-};
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(WidgetNavbar);
+export default connect(mapStateToProps, mapDispatchToProps)(WidgetNavbar)
