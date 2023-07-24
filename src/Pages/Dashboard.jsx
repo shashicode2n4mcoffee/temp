@@ -1,42 +1,21 @@
-import Widget from "../Components/Widget";
-import React, { useState } from "react";
-import { styled } from "@mui/system";
-import { Container, Grid, Paper } from "@mui/material";
-import TradingViewWidget from "../Components/TradingViewWidget";
-import Navbar from "../Components/Navbar";
-import WidgetItems from "../Components/WidgetItems";
-import { LineCharts } from "../Components/SentimentsChart";
-import CategoriesBarChart from "../Components/CategoriesBarChart";
-import EventTime from "../Components/EventTime";
-import { EventDashboard } from "../Components/EventDashboard";
-import WidgetNavbar from "../Components/WidgetNavbar";
+import React, { useState } from 'react'
+import { styled } from '@mui/system'
+import { Container, Grid } from '@mui/material'
+import TradingViewWidget from '../Components/TradingViewWidget'
+import Navbar from '../Components/Navbar'
+import WidgetNavbar from '../Components/WidgetNavbar'
+import Widget from '../Components/Widget'
+import WidgetItems from '../Components/WidgetItems'
+import { LineCharts } from '../Components/SentimentsChart'
+import CategoriesBarChart from '../Components/CategoriesBarChart'
+import EventTime from '../Components/EventTime'
+
+import '../Styles/_variables.scss'
 
 const DashboardContainer = styled(Container)(({ theme }) => ({
   marginTop: theme.spacing(4),
-  backgroundColor: "#45454D",
-}));
-
-const DashboardPaper = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(2),
-  textAlign: "center",
-  color: theme.palette.text.primary,
-  backgroundColor: theme.palette.background.paper,
-}));
-
-const events = [
-  {
-    title: "India is growing",
-    status: "ANNOUNCED",
-    action: "Summary",
-    time: "Fri Dec 10 2023 05:30 GMT+0530",
-  },
-  {
-    title: "India is growing",
-    status: "ANNOUNCED",
-    action: "Summary",
-    time: "Fri Dec 11 2023 05:30 GMT+0530",
-  },
-];
+  backgroundColor: '$primary-color',
+}))
 
 const Dashboard = () => {
   const [widget, setWidget] = useState({
@@ -44,11 +23,11 @@ const Dashboard = () => {
     mediaSignal: false,
     sentimentSignal: false,
     eventDashboard: false,
-  });
+  })
 
   return (
-    <div style={{ display: "flex" }}>
-      <DashboardContainer maxWidth="xl">
+    <div style={{ display: 'flex' }}>
+      <DashboardContainer maxWidth='xl'>
         <Grid container>
           <Grid item xs={2}>
             <Navbar />
@@ -58,9 +37,9 @@ const Dashboard = () => {
           </Grid>
           <Grid
             container
-            direction="row"
+            direction='row'
             spacing={1}
-            sx={{ marginTop: "90px" }}
+            sx={{ marginTop: '90px' }}
           >
             <Grid item xs={12} sm={12} md={12}>
               <Grid item>
@@ -97,7 +76,7 @@ const Dashboard = () => {
         </Grid>
       </DashboardContainer>
     </div>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard
