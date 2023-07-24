@@ -1,4 +1,4 @@
-import '../Styles/EventTime.css'
+import '../Styles/EventTime.scss'
 import React, { useState, useEffect, useRef } from 'react'
 import { EventCard } from './EventCard'
 import { Box } from '@mui/material'
