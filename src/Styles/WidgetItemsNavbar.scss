@@ -1,0 +1,7 @@
+@import './main.scss';
+
+.widget-items-navbar {
+  @include flex(column, center, center);
+  width: 100%;
+  color: $primary-text-color;
+}
