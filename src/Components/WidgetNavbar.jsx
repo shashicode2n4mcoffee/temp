@@ -50,6 +50,7 @@ const WidgetNavbar = ({
   }
 
   const handleTimeSelect = (time) => {
+    console.info('======SELECTED TIME======', time)
     fetchWidgetBarSelectedTimeRequest(time)
   }
 

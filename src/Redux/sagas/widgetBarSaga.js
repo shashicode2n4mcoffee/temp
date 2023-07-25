@@ -1,17 +1,17 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
 import {
   FETCH_WIDGETDETAILS_SELECTED_SYMBOL_REQUEST,
-  FETCH_WIDGETDETAILS_SELECTED_TIME_REQUEST
+  FETCH_WIDGETDETAILS_SELECTED_TIME_REQUEST,
 } from '../types'
 import api from '../../Api'
 import {
   fetchWidgetBarSelectedSymbolFailure,
   fetchWidgetBarSelectedSymbolSuccess,
   fetchWidgetBarSelectedTimeFailure,
-  fetchWidgetBarSelectedTimeSuccess
+  fetchWidgetBarSelectedTimeSuccess,
 } from '../actions/widgetBarActions'
 
-function* fetchWidgetSelectedSymbol (payload) {
+function* fetchWidgetSelectedSymbol(payload) {
   try {
     yield put(fetchWidgetBarSelectedSymbolSuccess(payload.payload))
   } catch (error) {
@@ -19,16 +19,15 @@ function* fetchWidgetSelectedSymbol (payload) {
   }
 }
 
-function* fetchWidgetSelectedTime (payload) {
-  console.info('=====TIME SAGA====', payload)
+function* fetchWidgetSelectedTime(payload) {
   try {
-    yield put(fetchWidgetBarSelectedTimeSuccess(payload.payload.time))
+    yield put(fetchWidgetBarSelectedTimeSuccess(payload.payload))
   } catch (error) {
     yield put(fetchWidgetBarSelectedTimeFailure(error.message))
   }
 }
 
-function* widgetBarSaga () {
+function* widgetBarSaga() {
   yield takeEvery(
     FETCH_WIDGETDETAILS_SELECTED_SYMBOL_REQUEST,
     fetchWidgetSelectedSymbol

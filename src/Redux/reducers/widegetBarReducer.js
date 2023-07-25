@@ -5,16 +5,16 @@ import {
   FETCH_WIDGETDETAILS_SELECTED_SYMBOL_SUCCESS,
   FETCH_WIDGETDETAILS_SELECTED_SYMBOL_FAILURE,
   FETCH_WIDGETDETAILS_SELECTED_TIME_SUCCESS,
-  FETCH_WIDGETDETAILS_SELECTED_TIME_FAILURE
+  FETCH_WIDGETDETAILS_SELECTED_TIME_FAILURE,
 } from '../types'
 
 const initialState = {
   loading: false,
   seletcedSymbol: CURRENCIES[0],
-  selectedTime: TIMEFRAME[0].time,
+  selectedTime: TIMEFRAME[0],
   symbolList: CURRENCIES,
   timeFrames: TIMEFRAME,
-  error: null
+  error: null,
 }
 
 const widgetBarReducer = (state = initialState, action) => {
@@ -23,37 +23,37 @@ const widgetBarReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        error: null
+        error: null,
       }
     case FETCH_WIDGETDETAILS_SELECTED_SYMBOL_SUCCESS:
       return {
         ...state,
         loading: false,
-        seletcedSymbol: action.payload
+        seletcedSymbol: action.payload,
       }
     case FETCH_WIDGETDETAILS_SELECTED_SYMBOL_FAILURE:
       return {
         ...state,
         loading: false,
-        error: action.payload
+        error: action.payload,
       }
     case FETCH_WIDGETDETAILS_SELECTED_SYMBOL_REQUEST:
       return {
         ...state,
         loading: true,
-        error: null
+        error: null,
       }
     case FETCH_WIDGETDETAILS_SELECTED_TIME_SUCCESS:
       return {
         ...state,
         loading: false,
-        selectedTime: action.payload
+        selectedTime: action.payload,
       }
     case FETCH_WIDGETDETAILS_SELECTED_TIME_FAILURE:
       return {
         ...state,
         loading: false,
-        error: action.payload
+        error: action.payload,
       }
     default:
       return state

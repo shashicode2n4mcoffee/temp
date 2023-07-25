@@ -119,7 +119,7 @@ const EventTime = () => {
   }, [currentTime])
 
   useEffect(() => {
-    console.info('====EVENT DIV SIZE====', eventDivSize)
+    // console.info('====EVENT DIV SIZE====', eventDivSize)
   }, [eventDivSize])
 
   const isPast = (time) => {
