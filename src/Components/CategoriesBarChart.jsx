@@ -1,129 +1,130 @@
-import React, { useCallback, useEffect, useState } from "react";
-import ReactEcharts from "echarts-for-react";
-import ChartDataModal from "./ChartDataModal";
-import { fetchUsersRequest } from "../Redux/actions/usersActions";
-import { connect } from "react-redux";
-import { findSentiment } from "../Utils/findSentiment";
+import React, { useCallback, useEffect, useState } from 'react'
+import ReactEcharts from 'echarts-for-react'
+import ChartDataModal from './ChartDataModal'
+import { fetchUsersRequest } from '../Redux/actions/usersActions'
+import { connect } from 'react-redux'
+import { findSentiment } from '../Utils/findSentiment'
 
-const getColor = { positive: "green", negetive: "red", neutral: "orange" };
+const getColor = { positive: 'green', negetive: 'red', neutral: 'orange' }
 const CategoriesBarChart = ({ fetchUsers }) => {
   const [data, setData] = useState([
     {
       impact: 30,
-      sentiment: "positive",
-      news: "News1",
+      sentiment: 'positive',
+      news: 'News1',
     },
     {
       impact: 50,
-      sentiment: "neutral",
-      news: "News2",
+      sentiment: 'neutral',
+      news: 'News2',
     },
     {
       impact: 69,
-      sentiment: "negetive",
-      news: "News3",
+      sentiment: 'negetive',
+      news: 'News3',
     },
     {
       impact: 23,
-      sentiment: "positive",
-      news: "News4",
+      sentiment: 'positive',
+      news: 'News4',
     },
     {
       impact: 80,
-      sentiment: "positive",
-      news: "News5",
+      sentiment: 'positive',
+      news: 'News5',
     },
     {
       impact: 10,
-      sentiment: "neutral",
-      news: "News6",
+      sentiment: 'neutral',
+      news: 'News6',
     },
     {
       impact: 60,
-      sentiment: "negetive",
-      news: "News7",
+      sentiment: 'negetive',
+      news: 'News7',
     },
     {
       impact: 23,
-      sentiment: "positive",
-      news: "News8",
+      sentiment: 'positive',
+      news: 'News8',
     },
-  ]);
+  ])
 
-  const [barchartOptions, setBarchartOptions] = useState({});
-  const [modalOpen, setModalOpen] = useState(false);
+  const [barchartOptions, setBarchartOptions] = useState({})
+  const [modalOpen, setModalOpen] = useState(false)
 
   useEffect(() => {
-    fetchUsers();
-  }, []);
+    fetchUsers()
+  }, [])
 
   const getData = useCallback((data) => {
-    let filteredData = [];
+    let filteredData = []
     for (let i = 0; i < data.length; i++) {
       filteredData.push({
         value: data[i]?.impact,
         itemStyle: {
           color: getColor[data[i].sentiment],
         },
-      });
+      })
     }
-    return filteredData;
-  }, []);
+    return filteredData
+  }, [])
 
   const getNews = useCallback((data) => {
     const news = data?.map((newsItem) => {
-      return newsItem.news;
-    });
-    return news;
-  }, []);
+      return newsItem.news
+    })
+    return news
+  }, [])
 
   const getOptions = useCallback(
     (data) => {
       const options = {
         title: {
-          text: "Media Signals",
-          left: "left",
+          text: 'Media Signals',
+          left: 'left',
         },
         xAxis: {
-          type: "category",
+          type: 'category',
           data: getNews(data),
         },
         yAxis: {
-          type: "value",
+          type: 'value',
         },
         tooltip: {
-          trigger: "axis",
+          trigger: 'axis',
           axisPointer: {
-            type: "shadow",
+            type: 'shadow',
           },
           enterable: true,
           leaveable: false,
 
           formatter: (params) => {
-            const { name, value } = params[0];
+            const { name, value } = params[0]
             return `<div class="custom-tooltip"><p>News : ${name}</p>
             <p>Sentiment :${value}</p>
-            </div>`;
+            <p style="width:10rem"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>`
           },
         },
         series: [
           {
             data: getData(data),
-            type: "bar",
+            type: 'bar',
           },
         ],
-      };
+      }
 
-      setBarchartOptions(options);
+      setBarchartOptions(options)
     },
     [getData]
-  );
+  )
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const randomValue = Math.floor(Math.random() * 100);
-      let simulateData = data.slice();
-      simulateData.shift();
+      const randomValue = Math.floor(Math.random() * 100)
+      let simulateData = data.slice()
+      simulateData.shift()
       simulateData = [
         ...data,
         {
@@ -131,68 +132,68 @@ const CategoriesBarChart = ({ fetchUsers }) => {
           sentiment: findSentiment(randomValue),
           news: `News${randomValue}`,
         },
-      ];
+      ]
 
-      getOptions(simulateData);
-    }, 100000);
+      getOptions(simulateData)
+    }, 100000)
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => clearInterval(interval)
+  }, [])
 
   function onChartClick(param, echarts) {
-    console.log("On CHARTS CLICK", param, echarts);
-    setModalOpen(true);
+    console.log('On CHARTS CLICK', param, echarts)
+    setModalOpen(true)
   }
 
   useEffect(() => {
     getOptions([
       {
         impact: 30,
-        sentiment: "positive",
-        news: "News1",
+        sentiment: 'positive',
+        news: 'News1',
       },
       {
         impact: 50,
-        sentiment: "neutral",
-        news: "News2",
+        sentiment: 'neutral',
+        news: 'News2',
       },
       {
         impact: 69,
-        sentiment: "negetive",
-        news: "News3",
+        sentiment: 'negetive',
+        news: 'News3',
       },
       {
         impact: 23,
-        sentiment: "positive",
-        news: "News4",
+        sentiment: 'positive',
+        news: 'News4',
       },
       {
         impact: 80,
-        sentiment: "positive",
-        news: "News5",
+        sentiment: 'positive',
+        news: 'News5',
       },
       {
         impact: 10,
-        sentiment: "neutral",
-        news: "News6",
+        sentiment: 'neutral',
+        news: 'News6',
       },
       {
         impact: 60,
-        sentiment: "negetive",
-        news: "News7",
+        sentiment: 'negetive',
+        news: 'News7',
       },
       {
         impact: 23,
-        sentiment: "positive",
-        news: "News8",
+        sentiment: 'positive',
+        news: 'News8',
       },
-    ]);
-  }, [getOptions, getData]);
+    ])
+  }, [getOptions, getData])
 
   return (
     <>
       <ReactEcharts
-        theme="dark"
+        theme='dark'
         option={barchartOptions}
         onEvents={{
           click: onChartClick,
@@ -200,17 +201,17 @@ const CategoriesBarChart = ({ fetchUsers }) => {
       />
       <ChartDataModal open={modalOpen} setOpen={setModalOpen} />
     </>
-  );
-};
+  )
+}
 
 const mapStateToProps = (state) => ({
   users: state.users.users,
   loading: state.users.loading,
   error: state.users.error,
-});
+})
 
 const mapDispatchToProps = {
   fetchUsers: fetchUsersRequest,
-};
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoriesBarChart);
+export default connect(mapStateToProps, mapDispatchToProps)(CategoriesBarChart)

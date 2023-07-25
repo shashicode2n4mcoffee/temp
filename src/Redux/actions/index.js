@@ -1,16 +1,23 @@
 import {
   fetchUsersFailure,
   fetchUsersSuccess,
-  fetchUsersRequest
+  fetchUsersRequest,
 } from './usersActions'
+
 import {
   fetchWidgetBarSelectedSymbolFailure,
   fetchWidgetBarSelectedSymbolSuccess,
   fetchWidgetBarSelectedSymbolRequest,
   fetchWidgetBarSelectedTimeRequest,
   fetchWidgetBarSelectedTimeSuccess,
-  fetchWidgetBarSelectedTimeFailure
+  fetchWidgetBarSelectedTimeFailure,
 } from './widgetBarActions'
+
+import {
+  fetchLoginFailure,
+  fetchLoginSuccess,
+  fetchLoginRequest,
+} from './authActions'
 
 export default {
   fetchUsersFailure,
@@ -21,5 +28,8 @@ export default {
   fetchWidgetBarSelectedSymbolRequest,
   fetchWidgetBarSelectedTimeRequest,
   fetchWidgetBarSelectedTimeSuccess,
-  fetchWidgetBarSelectedTimeFailure
+  fetchWidgetBarSelectedTimeFailure,
+  fetchLoginFailure,
+  fetchLoginSuccess,
+  fetchLoginRequest,
 }

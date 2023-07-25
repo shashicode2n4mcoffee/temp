@@ -57,7 +57,7 @@ const Dashboard = () => {
             </Grid>
             <Grid item>
               <Widget>
-                {/* {!widget.eventDashboard ? <EventTime /> : <WidgetItems />} */}
+                {!widget.eventDashboard ? <EventTime /> : <WidgetItems />}
                 {/* <EventDashboard date={new Date()} events={events} /> */}
                 <WidgetItems />
               </Widget>
