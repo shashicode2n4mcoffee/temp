@@ -3,6 +3,7 @@ import '../Styles/_variables.scss'
 import React, { useState } from 'react'
 import { styled } from '@mui/system'
 import { Container, Grid } from '@mui/material'
+import { connect } from 'react-redux'
 import TradingViewWidget from '../Components/TradingViewWidget'
 import Navbar from '../Components/Navbar'
 import WidgetNavbar from '../Components/WidgetNavbar'
@@ -11,13 +12,34 @@ import WidgetItems from '../Components/WidgetItems'
 import { LineCharts } from '../Components/SentimentsChart'
 import CategoriesBarChart from '../Components/CategoriesBarChart'
 import EventTime from '../Components/EventTime'
+import { WIDGET_ITEMS_NAMES } from '../Configs/widget-items'
 
 const DashboardContainer = styled(Container)(({ theme }) => ({
   marginTop: theme.spacing(4),
   backgroundColor: '$primary-color',
 }))
 
-const Dashboard = () => {
+const getWidget = (widgetName) => {
+  switch (widgetName) {
+    case WIDGET_ITEMS_NAMES.PRICE_CHART:
+      return <TradingViewWidget />
+      break
+    case WIDGET_ITEMS_NAMES.MEDIA_SIGNALS:
+      return <CategoriesBarChart />
+      break
+    case WIDGET_ITEMS_NAMES.EVENT_BRIEFING:
+      return <EventTime />
+      break
+    case WIDGET_ITEMS_NAMES.EVENT_PULSE:
+      return <EventTime />
+      break
+    case WIDGET_ITEMS_NAMES.SOCIAL_SENTIMENT:
+      return <LineCharts />
+      break
+  }
+}
+
+const Dashboard = ({ widgetList }) => {
   const [widget, setWidget] = useState({
     tradingView: false,
     mediaSignal: false,
@@ -36,7 +58,20 @@ const Dashboard = () => {
         </Grid>
         <Grid container direction='row' spacing={1} sx={{ marginTop: '90px' }}>
           <Grid item xs={12} sm={12} md={12}>
-            <Grid item>
+            {widgetList.map((widget, index) => {
+              return (
+                <Grid item>
+                  <Widget>
+                    {widget.value ? (
+                      getWidget(widget.key)
+                    ) : (
+                      <WidgetItems setWidget={setWidget} />
+                    )}
+                  </Widget>
+                </Grid>
+              )
+            })}
+            {/* <Grid item>
               <Widget>
                 {!widget.tradingView ? (
                   <TradingViewWidget />
@@ -58,10 +93,9 @@ const Dashboard = () => {
             <Grid item>
               <Widget>
                 {!widget.eventDashboard ? <EventTime /> : <WidgetItems />}
-                {/* <EventDashboard date={new Date()} events={events} /> */}
                 <WidgetItems />
               </Widget>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Grid>
       </Grid>
@@ -69,4 +103,10 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+const mapStateToProps = (state) => ({
+  widgetList: state.widgetsBar.widgetList,
+  loading: state.widgetsBar.loading,
+  error: state.widgetsBar.error,
+})
+
+export default connect(mapStateToProps)(Dashboard)

@@ -1,5 +1,6 @@
 import { CURRENCIES } from '../../Configs/currencies'
 import { TIMEFRAME } from '../../Configs/timeframe'
+import { WIDGET_ITEMS } from '../../Configs/widget-items'
 import {
   FETCH_WIDGETDETAILS_SELECTED_SYMBOL_REQUEST,
   FETCH_WIDGETDETAILS_SELECTED_SYMBOL_SUCCESS,
@@ -15,6 +16,7 @@ const initialState = {
   symbolList: CURRENCIES,
   timeFrames: TIMEFRAME,
   error: null,
+  widgetList: WIDGET_ITEMS,
 }
 
 const widgetBarReducer = (state = initialState, action) => {

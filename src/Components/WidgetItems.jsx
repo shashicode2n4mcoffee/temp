@@ -30,7 +30,7 @@ const WidgetItems = () => {
               primary={widget.key}
               sx={{
                 paddingLeft: '.5rem',
-                color: 'white',
+                color: '$primary-text-color',
                 cursor: 'pointer',
               }}
             />
