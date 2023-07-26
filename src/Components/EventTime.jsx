@@ -24,43 +24,43 @@ let data = [
   {
     title: 'NASDAQ is ATH',
     status: 'ANNOUNCED',
-    action: 'Summary',
+    summary: 'Summary',
     time: new Date('2023-07-24T10:38:00.000Z'),
   },
   {
     title: 'IT Market is booming again',
     status: 'ANNOUNCED',
-    action: 'Summary',
+    summary: 'Summary',
     time: new Date('2023-07-24T10:38:00.000Z'),
   },
   {
     title: 'DB is leading FOrex Market',
     status: 'ANNOUNCED',
-    action: 'Summary',
+    summary: 'Summary',
     time: new Date('2023-07-24T10:38:00.000Z'),
   },
   {
     title: 'GS annaounced major deal MS',
     status: 'ANNOUNCED',
-    action: 'Summary',
+    summary: 'Summary',
     time: new Date('2023-07-24T10:38:00.000Z'),
   },
   {
     title: 'DB is leading FOrex Market',
     status: 'ANNOUNCED',
-    action: 'Summary',
+    summary: 'Summary',
     time: new Date('2023-07-21T9:38:00.000Z'),
   },
   {
     title: 'DB is leading Forex Market',
     status: 'ANNOUNCED',
-    action: 'Summary',
+    summary: 'Summary',
     time: new Date('2023-07-25T12:38:00.000Z'),
   },
   {
     title: 'GS annaounced major deal MS',
     status: 'ANNOUNCED',
-    action: 'Summary',
+    summary: 'Summary',
     time: new Date('2023-07-23T11:38:00.000Z'),
   },
 ]
@@ -135,7 +135,7 @@ const EventTime = ({ eventPulse, fetchEventPluseRequest }) => {
   }
 
   const renderData = (eventTime) => {
-    return eventPulse.map((ele, index) => {
+    return data.map((ele, index) => {
       return eventTime === 'past'
         ? isPast(new Date(ele.time)) && (
             <EventCard event={ele} key={index} showTimeAndDate />

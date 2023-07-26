@@ -6,9 +6,17 @@ import {
   CardContent,
   Typography,
 } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
+import ChartDataModal from './ChartDataModal'
 
 export const EventCard = ({ event }) => {
+  const [open, setOpen] = useState(false)
+
+  const handleSummary = (event) => {
+    setOpen(true)
+    console.info('=====EVENT CARD======', event.title)
+  }
+
   return (
     <Card
       sx={{
@@ -41,6 +49,7 @@ export const EventCard = ({ event }) => {
         </Typography>
         <Button
           size='small'
+          onClick={() => handleSummary(event)}
           sx={{
             font: 'IBM Plex Sans',
             color: '#000AFF',
@@ -53,6 +62,7 @@ export const EventCard = ({ event }) => {
           SUMMARY
         </Button>
       </CardActions>
+      <ChartDataModal open={open} setOpen={setOpen} data={event} />
     </Card>
   )
 }
