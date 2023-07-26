@@ -7,6 +7,10 @@ import {
   FETCH_WIDGETDETAILS_SELECTED_SYMBOL_FAILURE,
   FETCH_WIDGETDETAILS_SELECTED_TIME_SUCCESS,
   FETCH_WIDGETDETAILS_SELECTED_TIME_FAILURE,
+  FETCH_WIDGETDETAILS_SELECTED_TIME_REQUEST,
+  UPDATE_WIDGETDETAILS_WIDGET_LIST_REQUEST,
+  UPDATE_WIDGETDETAILS_WIDGET_LIST_SUCCESS,
+  UPDATE_WIDGETDETAILS_WIDGET_LIST_FAILURE,
 } from '../types'
 
 const initialState = {
@@ -39,7 +43,7 @@ const widgetBarReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload,
       }
-    case FETCH_WIDGETDETAILS_SELECTED_SYMBOL_REQUEST:
+    case FETCH_WIDGETDETAILS_SELECTED_TIME_REQUEST:
       return {
         ...state,
         loading: true,
@@ -52,6 +56,24 @@ const widgetBarReducer = (state = initialState, action) => {
         selectedTime: action.payload,
       }
     case FETCH_WIDGETDETAILS_SELECTED_TIME_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      }
+    case UPDATE_WIDGETDETAILS_WIDGET_LIST_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      }
+    case UPDATE_WIDGETDETAILS_WIDGET_LIST_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        widgetList: action.payload,
+      }
+    case UPDATE_WIDGETDETAILS_WIDGET_LIST_FAILURE:
       return {
         ...state,
         loading: false,

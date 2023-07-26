@@ -11,6 +11,9 @@ import {
   fetchWidgetBarSelectedTimeRequest,
   fetchWidgetBarSelectedTimeSuccess,
   fetchWidgetBarSelectedTimeFailure,
+  updateWidgetBarWidgetListRequest,
+  updateWidgetBarWidgetListSuccess,
+  updateWidgetBarWidgetListFailure,
 } from './widgetBarActions'
 
 import {
@@ -29,6 +32,9 @@ export default {
   fetchWidgetBarSelectedTimeRequest,
   fetchWidgetBarSelectedTimeSuccess,
   fetchWidgetBarSelectedTimeFailure,
+  updateWidgetBarWidgetListRequest,
+  updateWidgetBarWidgetListSuccess,
+  updateWidgetBarWidgetListFailure,
   fetchLoginFailure,
   fetchLoginSuccess,
   fetchLoginRequest,
