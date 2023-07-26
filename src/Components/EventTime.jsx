@@ -93,7 +93,7 @@ const EventTime = ({ eventPulse, fetchEventPluseRequest }) => {
 
     if (startOfDayTimeMs && timeMoveElement) {
       const pastDuration = currentTimeMs - startOfDayTimeMs
-      const futureDuration = 24 * 60 * 60 * 1000 - pastDuration // 24 hours in milliseconds
+      const futureDuration = 24 * 60 * 60 * 1000 - pastDuration
 
       const pastPercentage = Math.min(
         (pastDuration / (24 * 60 * 60 * 1000)) * 100,
@@ -110,20 +110,14 @@ const EventTime = ({ eventPulse, fetchEventPluseRequest }) => {
         future: `${futurePercentage}%`,
       }))
 
-      const pastColor = '#141414' // Red for past events
-      const futureColor = '#0A175A' // Green for future events
-
-      console.info('=====TIME======', pastPercentage, futurePercentage)
+      const pastColor = '#141414'
+      const futureColor = '#0A175A'
 
       timeMoveElement.style.backgroundImage = `linear-gradient(90deg, ${pastColor} ${pastPercentage}%, ${futureColor} ${pastPercentage}%, ${futureColor} ${
         pastPercentage + futurePercentage
       }%)`
     }
   }, [currentTime])
-
-  useEffect(() => {
-    // console.info('====EVENT DIV SIZE====', eventDivSize)
-  }, [eventDivSize])
 
   useEffect(() => {
     const data = {
