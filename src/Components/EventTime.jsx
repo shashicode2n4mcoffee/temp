@@ -2,6 +2,9 @@ import '../Styles/EventTime.scss'
 import React, { useState, useEffect, useRef } from 'react'
 import { EventCard } from './EventCard'
 import { Box } from '@mui/material'
+import { connect } from 'react-redux'
+import { fetchEventPluseRequest } from '../Redux/actions/eventPulseActions'
+
 const events = [
   {
     title: 'India is growing',
@@ -62,7 +65,7 @@ let data = [
   },
 ]
 
-const EventTime = () => {
+const EventTime = ({ eventPulse, fetchEventPluseRequest }) => {
   const [currentTime, setCurrentTime] = useState(new Date())
   const [eventDivSize, setEventDivSize] = useState({
     past: '0%',
@@ -121,6 +124,13 @@ const EventTime = () => {
   useEffect(() => {
     // console.info('====EVENT DIV SIZE====', eventDivSize)
   }, [eventDivSize])
+
+  useEffect(() => {
+    const data = {
+      url: '/eventPulse',
+    }
+    fetchEventPluseRequest(data)
+  }, [])
 
   const isPast = (time) => {
     return time < currentTime
@@ -184,4 +194,14 @@ const EventTime = () => {
   )
 }
 
-export default EventTime
+const mapStateToProps = (state) => ({
+  eventPulse: state.eventPulse,
+  loading: state.widgetsBar.loading,
+  error: state.widgetsBar.error,
+})
+
+const mapDispatchToProps = {
+  fetchEventPluseRequest: fetchEventPluseRequest,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventTime)

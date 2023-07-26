@@ -22,6 +22,12 @@ import {
   fetchLoginRequest,
 } from './authActions'
 
+import {
+  fetchEventPluseRequest,
+  fetchEventPluseSuccess,
+  fetchEventPluseFailure,
+} from './eventPulseActions'
+
 export default {
   fetchUsersFailure,
   fetchUsersSuccess,
@@ -38,4 +44,7 @@ export default {
   fetchLoginFailure,
   fetchLoginSuccess,
   fetchLoginRequest,
+  fetchEventPluseRequest,
+  fetchEventPluseSuccess,
+  fetchEventPluseFailure,
 }
