@@ -137,10 +137,10 @@ const EventTime = ({ eventPulse, fetchEventPluseRequest }) => {
   const renderData = (eventTime) => {
     return eventPulse.map((ele, index) => {
       return eventTime === 'past'
-        ? isPast(ele.time) && (
+        ? isPast(new Date(ele.time)) && (
             <EventCard event={ele} key={index} showTimeAndDate />
           )
-        : isFuture(ele.time) && (
+        : isFuture(new Date(ele.time)) && (
             <EventCard event={ele} key={index} showTimeAndDate />
           )
     })

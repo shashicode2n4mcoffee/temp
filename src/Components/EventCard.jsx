@@ -50,7 +50,7 @@ export const EventCard = ({ event }) => {
             minWidth: '20px',
           }}
         >
-          {event.action}
+          SUMMARY
         </Button>
       </CardActions>
     </Card>
