@@ -1,3 +1,4 @@
+import '../Styles/Modal.scss'
 import React, { useEffect, useState } from 'react'
 import { Button, Modal, Box, Typography } from '@mui/material'
 
@@ -38,12 +39,10 @@ const ChartDataModal = ({ open, setOpen, data }) => {
             {data?.title}
           </Typography>
           <Typography variant='body1'>{data?.summary}</Typography>
-          <Box sx={{ marginTop: '1rem' }}>
+          <Box sx={{ marginTop: '1rem' }} className='modal-btns'>
+            <Button variant='contained'>Like</Button>
             <Button variant='contained' onClick={handleClose}>
               Close
-            </Button>
-            <Button variant='contained' sx={{ marginLeft: '1rem' }}>
-              Like
             </Button>
           </Box>
         </Box>

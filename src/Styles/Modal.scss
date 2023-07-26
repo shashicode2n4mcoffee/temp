@@ -1,0 +1,4 @@
+@import '../Styles//main.scss';
+.modal-btns {
+  @include flex(row, space-between, center);
+}
