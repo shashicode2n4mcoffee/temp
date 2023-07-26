@@ -1,22 +1,12 @@
-.time-container {
-    display: flex;
-}
+@import './main.scss';
 
-.time-slot {
-    flex: 1;
-    text-align: center;
-    padding: 5px;
-    height: 400px;
-}
-
-.past {
-    background-color: #090909;
-}
-
-.present {
-    background-color: #ffd700;
-}
-
-.future {
-    background-color: #ABABAB;
+.time-move {
+  display: flex;
+  background-size: 100% auto;
+  height: 50vh;
+  .time-move-events {
+    @include flex(column, flex-start, center);
+    flex-wrap: wrap;
+    padding: 1rem;
+  }
 }

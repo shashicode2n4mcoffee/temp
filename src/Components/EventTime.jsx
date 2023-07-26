@@ -110,8 +110,8 @@ const EventTime = ({ eventPulse, fetchEventPluseRequest }) => {
         future: `${futurePercentage}%`,
       }))
 
-      const pastColor = '#ff9999' // Red for past events
-      const futureColor = '#99ff99' // Green for future events
+      const pastColor = '#141414' // Red for past events
+      const futureColor = '#0A175A' // Green for future events
 
       console.info('=====TIME======', pastPercentage, futurePercentage)
 
@@ -154,36 +154,18 @@ const EventTime = ({ eventPulse, fetchEventPluseRequest }) => {
 
   return (
     <Box>
-      <Box
-        ref={timeMoveRef}
-        className='time-move'
-        style={{ display: 'flex', backgroundSize: '100% auto', height: '50vh' }} // Adjust the background size as needed
-      >
+      <Box ref={timeMoveRef} className='time-move'>
         <Box
-          // className="time-move past"
+          className='time-move-events'
           sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'flex-start',
-            flexDirection: 'column',
-            flexWrap: 'wrap',
-            padding: '1rem',
-            // width: "50%",
             width: eventDivSize.past,
           }}
         >
           {renderData('past')}
         </Box>
         <Box
-          // className="time-move future"
+          className='time-move-events'
           sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'flex-start',
-            flexDirection: 'column',
-            flexWrap: 'wrap',
-            padding: '1rem',
-            // width: "50%",
             width: eventDivSize.future,
           }}
         >
