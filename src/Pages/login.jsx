@@ -1,13 +1,20 @@
 // src/components/LoginForm.js
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { fetchLoginRequest } from '../Redux/actions/authActions'
 
-const LoginForm = ({ fetchLoginRequest }) => {
+const LoginForm = ({ fetchLoginRequest, auth }) => {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
   })
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    auth?.username && navigate('/dashboard')
+    console.log('=====AUTH IN LOGIN====', auth)
+  }, [auth])
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -44,8 +51,7 @@ const LoginForm = ({ fetchLoginRequest }) => {
 }
 
 const mapStateToProps = (state) => ({
-  seletcedSymbol: state.widgetsBar?.seletcedSymbol,
-  selectedTime: state.widgetsBar?.selectedTime,
+  auth: state.auth?.authCredientials,
   loading: state.widgetsBar.loading,
   error: state.widgetsBar.error,
 })

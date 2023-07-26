@@ -15,7 +15,6 @@ const WidgetItems = ({ widgetList, updateWidgetBarWidgetListRequest }) => {
         : widgetItem
     )
     updateWidgetBarWidgetListRequest(updatedWidgetList)
-    console.log('=====WIDGET=====', widget)
   }
 
   return (

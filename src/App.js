@@ -6,14 +6,14 @@ import LoginForm from './Pages/login'
 import ProtectedRoute from './Components/ProtectedRoute'
 
 function App() {
-  const appStyle = {
-    height: '100vh',
-  }
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Dashboard />} />
-        {/* <ProtectedRoute path='/dashboard' component={Dashboard} /> */}
+        <Route path='/' element={<LoginForm />} />
+        <Route
+          path='/dashboard'
+          element={<ProtectedRoute path='/dashboard' component={Dashboard} />}
+        />
       </Routes>
     </Router>
   )

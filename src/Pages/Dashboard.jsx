@@ -40,13 +40,6 @@ const getWidget = (widgetName) => {
 }
 
 const Dashboard = ({ widgetList }) => {
-  const [widget, setWidget] = useState({
-    tradingView: false,
-    mediaSignal: false,
-    sentimentSignal: false,
-    eventDashboard: false,
-  })
-
   return (
     <DashboardContainer maxWidth='xl'>
       <Grid container>
@@ -62,40 +55,11 @@ const Dashboard = ({ widgetList }) => {
               return (
                 <Grid item>
                   <Widget>
-                    {widget.value ? (
-                      getWidget(widget.key)
-                    ) : (
-                      <WidgetItems setWidget={setWidget} />
-                    )}
+                    {widget.value ? getWidget(widget.key) : <WidgetItems />}
                   </Widget>
                 </Grid>
               )
             })}
-            {/* <Grid item>
-              <Widget>
-                {!widget.tradingView ? (
-                  <TradingViewWidget />
-                ) : (
-                  <WidgetItems setWidget={setWidget} />
-                )}
-              </Widget>
-            </Grid>
-            <Grid item>
-              <Widget>
-                {!widget.sentimentSignal ? <LineCharts /> : <WidgetItems />}
-              </Widget>
-            </Grid>
-            <Grid item>
-              <Widget>
-                {!widget.mediaSignal ? <CategoriesBarChart /> : <WidgetItems />}
-              </Widget>
-            </Grid>
-            <Grid item>
-              <Widget>
-                {!widget.eventDashboard ? <EventTime /> : <WidgetItems />}
-                <WidgetItems />
-              </Widget>
-            </Grid> */}
           </Grid>
         </Grid>
       </Grid>
