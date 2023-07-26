@@ -20,7 +20,7 @@ const initialState = {
   symbolList: CURRENCIES,
   timeFrames: TIMEFRAME,
   error: null,
-  widgetList: WIDGET_ITEMS,
+  widgetList: [WIDGET_ITEMS[0], {}],
 }
 
 const widgetBarReducer = (state = initialState, action) => {

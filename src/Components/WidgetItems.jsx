@@ -9,13 +9,13 @@ import { updateWidgetBarWidgetListRequest } from '../Redux/actions/widgetBarActi
 
 const WidgetItems = ({ widgetList, updateWidgetBarWidgetListRequest }) => {
   const onHandleClick = (widget) => {
-    const updatedWidgetList = widgetList.map((widgetItem) =>
-      widgetItem.key === widget.key
-        ? { ...widgetItem, value: true }
-        : widgetItem
-    )
-    updateWidgetBarWidgetListRequest(updatedWidgetList)
-    console.log('=====WIDGET=====', widget)
+    let intermidiateWidgetList = widgetList.slice()
+    intermidiateWidgetList.pop()
+    intermidiateWidgetList.push({ ...widget, value: true })
+    if (widgetList?.length < 5) {
+      intermidiateWidgetList.push({})
+    }
+    updateWidgetBarWidgetListRequest(intermidiateWidgetList)
   }
 
   return (
