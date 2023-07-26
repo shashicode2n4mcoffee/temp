@@ -135,7 +135,7 @@ const EventTime = ({ eventPulse, fetchEventPluseRequest }) => {
   }
 
   const renderData = (eventTime) => {
-    return data.map((ele, index) => {
+    return eventPulse.map((ele, index) => {
       return eventTime === 'past'
         ? isPast(ele.time) && (
             <EventCard event={ele} key={index} showTimeAndDate />
@@ -171,7 +171,7 @@ const EventTime = ({ eventPulse, fetchEventPluseRequest }) => {
 }
 
 const mapStateToProps = (state) => ({
-  eventPulse: state.eventPulse,
+  eventPulse: state.eventPulse.eventPulse,
   loading: state.widgetsBar.loading,
   error: state.widgetsBar.error,
 })

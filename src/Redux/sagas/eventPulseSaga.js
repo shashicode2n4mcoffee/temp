@@ -8,10 +8,11 @@ import {
 
 function* fetchEventPulse() {
   try {
-    // const response = yield call(api.get, '/users')
+    const url = '/api/data/eventPulse?date=2023-07-26'
+    const response = yield call(api.get, url)
     console.info('=====EVENT PULSE IS CALLED')
-    const response = { data: '' }
-    response.data = { username: 'shashi', password: '1234' }
+    // const response = { data: '' }
+    // response.data = { username: 'shashi', password: '1234' }
     yield put(fetchEventPluseSuccess(response.data))
   } catch (error) {
     yield put(fetchEventPluseFailure(error.message))
