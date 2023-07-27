@@ -4,9 +4,10 @@ import ChartDataModal from './ChartDataModal'
 import { fetchUsersRequest } from '../Redux/actions/usersActions'
 import { connect } from 'react-redux'
 import { findSentiment } from '../Utils/findSentiment'
+import { fetchMediaSignalRequest } from '../Redux/actions/mediaSignalActions'
 
 const getColor = { positive: 'green', negetive: 'red', neutral: 'orange' }
-const CategoriesBarChart = ({ fetchUsers }) => {
+const CategoriesBarChart = ({ fetchMediaSignal, mediaSignal }) => {
   const [data, setData] = useState([
     {
       impact: 30,
@@ -54,7 +55,7 @@ const CategoriesBarChart = ({ fetchUsers }) => {
   const [modalOpen, setModalOpen] = useState(false)
 
   useEffect(() => {
-    fetchUsers()
+    fetchMediaSignal()
   }, [])
 
   const getData = useCallback((data) => {
@@ -205,13 +206,13 @@ const CategoriesBarChart = ({ fetchUsers }) => {
 }
 
 const mapStateToProps = (state) => ({
-  users: state.users.users,
+  mediaSignal: state.mediaSignal.data,
   loading: state.users.loading,
   error: state.users.error,
 })
 
 const mapDispatchToProps = {
-  fetchUsers: fetchUsersRequest,
+  fetchMediaSignal: fetchMediaSignalRequest,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoriesBarChart)

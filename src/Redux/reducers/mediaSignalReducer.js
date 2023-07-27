@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   loading: false,
-  mediaSignals: [],
+  data: [],
   error: null,
 }
 
@@ -22,7 +22,7 @@ const mediaSignalReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        mediaSignals: action.payload,
+        data: action.payload,
       }
     case FETCH_MEDIA_SIGNAL_FAILURE:
       return {
