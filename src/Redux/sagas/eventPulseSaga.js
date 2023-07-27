@@ -8,7 +8,7 @@ import {
 
 function* fetchEventPulse() {
   try {
-    const url = '/api/data/eventPulse?date=2023-07-26'
+    const url = '/api/data/eventPulse?date=2023-07-27'
     // const url = '/users'
 
     const response = yield call(api.get, url)

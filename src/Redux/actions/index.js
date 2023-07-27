@@ -28,6 +28,12 @@ import {
   fetchEventPluseFailure,
 } from './eventPulseActions'
 
+import {
+  fetchMediaSignalRequest,
+  fetchMediaSignalSuccess,
+  fetchMediaSignalFailure,
+} from './mediaSignalActions'
+
 export default {
   fetchUsersFailure,
   fetchUsersSuccess,
@@ -47,4 +53,7 @@ export default {
   fetchEventPluseRequest,
   fetchEventPluseSuccess,
   fetchEventPluseFailure,
+  fetchMediaSignalRequest,
+  fetchMediaSignalSuccess,
+  fetchMediaSignalFailure,
 }

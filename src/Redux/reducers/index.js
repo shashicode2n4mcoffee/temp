@@ -3,6 +3,7 @@ import usersReducer from './usersReducer'
 import widgetBarReducer from './widegetBarReducer'
 import authReducer from './authReducer'
 import eventPulseReducer from './eventPulseReducer'
+import mediaSignalReducer from './mediaSignalReducer'
 
 export {
   rootReducer,
@@ -10,4 +11,5 @@ export {
   widgetBarReducer,
   authReducer,
   eventPulseReducer,
+  mediaSignalReducer,
 }
