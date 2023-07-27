@@ -1,9 +1,10 @@
 import '../Styles/EventTime.scss'
 import React, { useState, useEffect, useRef } from 'react'
 import { EventCard } from './EventCard'
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { connect } from 'react-redux'
 import { fetchEventPluseRequest } from '../Redux/actions/eventPulseActions'
+import { positions } from '@mui/system'
 
 const events = [
   {
@@ -148,7 +149,21 @@ const EventTime = ({ eventPulse, fetchEventPluseRequest }) => {
 
   return (
     <Box>
-      <Box ref={timeMoveRef} className='time-move'>
+      <Box
+        ref={timeMoveRef}
+        className='time-move'
+        sx={{ position: 'relative' }}
+      >
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '1rem',
+            color: 'white',
+            paddingLeft: '1rem',
+          }}
+        >
+          <Typography sx={{ fontSize: '2rem' }}>Event Pulse</Typography>
+        </Box>
         <Box
           className='time-move-events'
           sx={{
