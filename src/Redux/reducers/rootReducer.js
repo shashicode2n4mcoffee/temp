@@ -5,6 +5,7 @@ import widgetBarReducer from './widegetBarReducer'
 import authReducer from './authReducer'
 import eventPulseReducer from './eventPulseReducer'
 import mediaSignalReducer from './mediaSignalReducer'
+import sentimentSignalReducer from './sentimentSignalReducer'
 
 export const rootReducer = combineReducers({
   users: usersReducer,
@@ -12,4 +13,5 @@ export const rootReducer = combineReducers({
   auth: authReducer,
   eventPulse: eventPulseReducer,
   mediaSignal: mediaSignalReducer,
+  sentimentSignal: sentimentSignalReducer,
 })

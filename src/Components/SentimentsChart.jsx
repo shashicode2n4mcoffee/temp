@@ -2,8 +2,10 @@ import '../Styles/SentimentsChart.scss'
 
 import React, { useState, useEffect } from 'react'
 import ReactEcharts from 'echarts-for-react'
+import { connect } from 'react-redux'
+import { fetchSentimentSignalRequest } from '../Redux/actions/sentimentSignalActions'
 
-export const LineCharts = () => {
+const LineCharts = ({ fetchSentimentSignal }) => {
   const [sentimentData, setSentimentData] = useState([
     {
       name: 'NASDAQ',
@@ -22,6 +24,10 @@ export const LineCharts = () => {
     },
   ])
   const [chartOptions, setChartOptions] = useState({})
+
+  useEffect(() => {
+    fetchSentimentSignal()
+  }, [])
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -81,3 +87,15 @@ export const LineCharts = () => {
 
   return <ReactEcharts option={chartOptions} style={{ height: 400 }} />
 }
+
+const mapStateToProps = (state) => ({
+  sentimentSignal: state.sentimentSignal.data,
+  loading: state.users.loading,
+  error: state.users.error,
+})
+
+const mapDispatchToProps = {
+  fetchSentimentSignal: fetchSentimentSignalRequest,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LineCharts)

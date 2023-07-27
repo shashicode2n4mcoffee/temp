@@ -34,6 +34,12 @@ import {
   fetchMediaSignalFailure,
 } from './mediaSignalActions'
 
+import {
+  fetchSentimentSignalRequest,
+  fetchSentimentSignalSuccess,
+  fetchSentimentSignalFailure,
+} from './sentimentSignalActions'
+
 export default {
   fetchUsersFailure,
   fetchUsersSuccess,
@@ -56,4 +62,7 @@ export default {
   fetchMediaSignalRequest,
   fetchMediaSignalSuccess,
   fetchMediaSignalFailure,
+  fetchSentimentSignalRequest,
+  fetchSentimentSignalSuccess,
+  fetchSentimentSignalFailure,
 }

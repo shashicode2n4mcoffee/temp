@@ -4,6 +4,7 @@ import widgetBarSaga from './widgetBarSaga'
 import authSaga from './authSaga'
 import eventPluseSaga from './eventPulseSaga'
 import mediaSignalSaga from './mediaSignalSaga'
+import sentimentSignalSaga from './sentimentSignalSaga'
 
 export {
   rootSaga,
@@ -12,4 +13,5 @@ export {
   authSaga,
   eventPluseSaga,
   mediaSignalSaga,
+  sentimentSignalSaga,
 }

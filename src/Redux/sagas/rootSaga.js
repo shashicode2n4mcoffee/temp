@@ -5,6 +5,7 @@ import {
   authSaga,
   eventPluseSaga,
   mediaSignalSaga,
+  sentimentSignalSaga,
 } from './index'
 
 export function* rootSaga() {
@@ -14,5 +15,6 @@ export function* rootSaga() {
     authSaga(),
     eventPluseSaga(),
     mediaSignalSaga(),
+    sentimentSignalSaga(),
   ])
 }
