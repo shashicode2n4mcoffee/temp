@@ -1,13 +1,20 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import ReactEcharts from 'echarts-for-react'
 import ChartDataModal from './ChartDataModal'
 import { fetchUsersRequest } from '../Redux/actions/usersActions'
 import { connect } from 'react-redux'
 import { findSentiment } from '../Utils/findSentiment'
 import { fetchMediaSignalRequest } from '../Redux/actions/mediaSignalActions'
+import { getTimeFrames } from '../Utils/getTimeFrames'
+import { URLS, URL_CONTEXT } from '../Configs/urls'
 
 const getColor = { positive: 'green', negetive: 'red', neutral: 'orange' }
-const CategoriesBarChart = ({ fetchMediaSignal, mediaSignal }) => {
+const CategoriesBarChart = ({
+  fetchMediaSignal,
+  mediaSignal,
+  selectedSymbol,
+  selectedTime,
+}) => {
   const [data, setData] = useState([
     {
       impact: 30,
@@ -55,8 +62,13 @@ const CategoriesBarChart = ({ fetchMediaSignal, mediaSignal }) => {
   const [modalOpen, setModalOpen] = useState(false)
 
   useEffect(() => {
-    fetchMediaSignal()
-  }, [])
+    const timeFramesDates = getTimeFrames(selectedTime?.time)
+    const data = {
+      url: `${URL_CONTEXT.baseContext}${URLS.mediaSignal}?startDate=${timeFramesDates.startDate}&endDate=${timeFramesDates.endDate}&currencyPair=${selectedSymbol}`,
+    }
+    console.info('======SHASHI TIMEFRAMES======', selectedSymbol, selectedTime)
+    fetchMediaSignal(data)
+  }, [selectedTime, selectedSymbol])
 
   const getData = useCallback((data) => {
     let filteredData = []
@@ -209,6 +221,8 @@ const mapStateToProps = (state) => ({
   mediaSignal: state.mediaSignal.data,
   loading: state.users.loading,
   error: state.users.error,
+  selectedTime: state.widgetsBar.selectedTime,
+  selectedSymbol: state.widgetsBar.selectedSymbol,
 })
 
 const mapDispatchToProps = {

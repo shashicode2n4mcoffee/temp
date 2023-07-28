@@ -6,10 +6,10 @@ import {
 import { FETCH_MEDIA_SIGNAL_REQUEST } from '../types'
 import api from '../../Api'
 
-function* fetchMediaSignal() {
+function* fetchMediaSignal(data) {
+  console.info('=======DATA IN MEDIA SIGNAL=====', data?.payload?.url)
   try {
-    const url = '/api/data/mediaSignal?fromDate=2023-07-27&toDate=2023-07-28'
-    const response = yield call(api.get, url)
+    const response = yield call(api.get, data?.payload?.url || '')
     console.info('=====EVENT PULSE IS CALLED')
     // const response = { data: [] }
     yield put(fetchMediaSignalSuccess(response.data))
