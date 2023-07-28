@@ -34,7 +34,6 @@ const TradingViewWidget = ({ seletcedSymbol, selectedTime }) => {
         document.getElementById('tradingview_e3e5b') &&
         'TradingView' in window
       ) {
-        console.info('======INTERVAL=====', selectedTime?.candleSize)
         new window.TradingView.widget({
           symbol: seletcedSymbol || 'USDEUR',
           interval: selectedTime?.candleSize || '5',

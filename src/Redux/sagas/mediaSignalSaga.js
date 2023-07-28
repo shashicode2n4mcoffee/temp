@@ -7,7 +7,6 @@ import { FETCH_MEDIA_SIGNAL_REQUEST } from '../types'
 import api from '../../Api'
 
 function* fetchMediaSignal(data) {
-  console.info('=======DATA IN MEDIA SIGNAL=====', data?.payload?.url)
   try {
     const response = yield call(api.get, data?.payload?.url || '')
     console.info('=====EVENT PULSE IS CALLED')

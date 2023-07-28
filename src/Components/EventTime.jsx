@@ -5,6 +5,8 @@ import { Box, Typography } from '@mui/material'
 import { connect } from 'react-redux'
 import { fetchEventPluseRequest } from '../Redux/actions/eventPulseActions'
 import { positions } from '@mui/system'
+import { URLS, URL_CONTEXT } from '../Configs/urls'
+import { getTimeFrames } from '../Utils/getTimeFrames'
 
 const events = [
   {
@@ -66,13 +68,20 @@ let data = [
   },
 ]
 
-const EventTime = ({ eventPulse, fetchEventPluseRequest }) => {
+const EventTime = ({
+  eventPulse,
+  fetchEventPluseRequest,
+  selectedSymbol,
+  selectedTime,
+}) => {
   const [currentTime, setCurrentTime] = useState(new Date())
   const [eventDivSize, setEventDivSize] = useState({
     past: '0%',
     future: '100%',
   })
   const timeMoveRef = useRef(null)
+
+  console.log('======selectedSymbol======', selectedSymbol)
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -121,11 +130,12 @@ const EventTime = ({ eventPulse, fetchEventPluseRequest }) => {
   }, [currentTime])
 
   useEffect(() => {
+    const timeFramesDates = getTimeFrames(selectedTime?.time)
     const data = {
-      url: '/eventPulse',
+      url: `${URL_CONTEXT.baseContext}${URLS.eventDashboard}?startDate=${timeFramesDates?.startDate}&endDate=${timeFramesDates?.endDate}&currencyPair=${selectedSymbol}`,
     }
     fetchEventPluseRequest(data)
-  }, [])
+  }, [selectedTime, selectedSymbol])
 
   const isPast = (time) => {
     return time < currentTime
@@ -189,6 +199,8 @@ const mapStateToProps = (state) => ({
   eventPulse: state.eventPulse.eventPulse,
   loading: state.widgetsBar.loading,
   error: state.widgetsBar.error,
+  selectedTime: state.widgetsBar.selectedTime,
+  selectedSymbol: state.widgetsBar.selectedSymbol,
 })
 
 const mapDispatchToProps = {

@@ -4,5 +4,5 @@ export const CURRENCIES = [
   'GBPUSD',
   'JPYUSD',
   'AUDUSD',
-  'CADEUR'
+  'CADEUR',
 ]

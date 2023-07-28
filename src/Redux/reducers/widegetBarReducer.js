@@ -15,7 +15,7 @@ import {
 
 const initialState = {
   loading: false,
-  seletcedSymbol: CURRENCIES[0],
+  selectedSymbol: CURRENCIES[0],
   selectedTime: TIMEFRAME[0],
   symbolList: CURRENCIES,
   timeFrames: TIMEFRAME,
@@ -35,7 +35,7 @@ const widgetBarReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        seletcedSymbol: action.payload,
+        selectedSymbol: action.payload,
       }
     case FETCH_WIDGETDETAILS_SELECTED_SYMBOL_FAILURE:
       return {

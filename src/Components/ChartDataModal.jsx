@@ -15,10 +15,6 @@ const ChartDataModal = ({ open, setOpen, data }) => {
     setOpen(open)
   }, [open])
 
-  useEffect(() => {
-    console.info('=====EVENT INSIDE THE MODAL====', data)
-  }, [data])
-
   return (
     <div>
       <Modal open={open} onClose={handleClose}>

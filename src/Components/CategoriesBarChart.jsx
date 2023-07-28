@@ -64,9 +64,8 @@ const CategoriesBarChart = ({
   useEffect(() => {
     const timeFramesDates = getTimeFrames(selectedTime?.time)
     const data = {
-      url: `${URL_CONTEXT.baseContext}${URLS.mediaSignal}?startDate=${timeFramesDates.startDate}&endDate=${timeFramesDates.endDate}&currencyPair=${selectedSymbol}`,
+      url: `${URL_CONTEXT.baseContext}${URLS.mediaSignal}?startDate=${timeFramesDates?.startDate}&endDate=${timeFramesDates?.endDate}&currencyPair=${selectedSymbol}`,
     }
-    console.info('======SHASHI TIMEFRAMES======', selectedSymbol, selectedTime)
     fetchMediaSignal(data)
   }, [selectedTime, selectedSymbol])
 

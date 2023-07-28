@@ -50,7 +50,6 @@ const WidgetNavbar = ({
   }
 
   const handleTimeSelect = (time) => {
-    console.info('======SELECTED TIME======', time)
     fetchWidgetBarSelectedTimeRequest(time)
   }
 
@@ -64,8 +63,7 @@ const WidgetNavbar = ({
           aria-haspopup='true'
           component='div'
         >
-          {selectedCurrency} <ArrowDropDownIcon />{' '}
-          {/* Add the ArrowDropDownIcon */}
+          {selectedCurrency} <ArrowDropDownIcon />
         </IconButton>
         <Menu
           id='currency-menu'
