@@ -7,11 +7,19 @@ import Dashboard from './Pages/Dashboard'
 // import ProtectedRoute from './Components/ProtectedRoute'
 import { useEffect } from 'react'
 import { fetchCurrenciesRequest } from './Redux/actions/currenciesActions'
+import { URLS, URL_CONTEXT } from './Configs/urls'
 
-const App = ({ fetchCurrencies }) => {
+const App = ({ fetchCurrencies, currencies }) => {
   useEffect(() => {
-    fetchCurrencies()
+    const data = {
+      url: `${URL_CONTEXT.baseContext}${URLS.currencies}`,
+    }
+    fetchCurrencies(data)
   }, [])
+
+  useEffect(() => {
+    console.info('======CURRENCIES======', currencies)
+  }, [currencies])
   return (
     <Router>
       <Routes>
