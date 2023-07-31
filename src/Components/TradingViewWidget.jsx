@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 let tvScriptLoadingPromise
 
-const TradingViewWidget = ({ seletcedSymbol, selectedTime }) => {
+const TradingViewWidget = ({ selectedSymbol, selectedTime }) => {
   const onLoadScriptRef = useRef()
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const TradingViewWidget = ({ seletcedSymbol, selectedTime }) => {
         'TradingView' in window
       ) {
         new window.TradingView.widget({
-          symbol: seletcedSymbol || 'USDEUR',
+          symbol: selectedSymbol || 'USDEUR',
           interval: selectedTime?.candleSize || '5',
           timezone: 'Asia/Kolkata',
           theme: 'dark',
@@ -54,7 +54,7 @@ const TradingViewWidget = ({ seletcedSymbol, selectedTime }) => {
         })
       }
     }
-  }, [seletcedSymbol, selectedTime])
+  }, [selectedSymbol, selectedTime])
 
   return (
     <Box className='tradingview-widget-container' sx={{ height: '400px' }}>
@@ -64,7 +64,7 @@ const TradingViewWidget = ({ seletcedSymbol, selectedTime }) => {
 }
 
 const mapStateToProps = (state) => ({
-  seletcedSymbol: state.widgetsBar?.seletcedSymbol,
+  selectedSymbol: state.widgetsBar?.selectedSymbol,
   selectedTime: state.widgetsBar?.selectedTime,
   loading: state.widgetsBar.loading,
   error: state.widgetsBar.error,
