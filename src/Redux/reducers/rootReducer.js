@@ -6,9 +6,11 @@ import authReducer from './authReducer'
 import eventPulseReducer from './eventPulseReducer'
 import mediaSignalReducer from './mediaSignalReducer'
 import sentimentSignalReducer from './sentimentSignalReducer'
+import currenciesReducer from './currenciesReducer'
 
 export const rootReducer = combineReducers({
   users: usersReducer,
+  currencies: currenciesReducer,
   widgetsBar: widgetBarReducer,
   auth: authReducer,
   eventPulse: eventPulseReducer,

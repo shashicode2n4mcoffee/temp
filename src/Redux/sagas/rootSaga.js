@@ -6,11 +6,13 @@ import {
   eventPluseSaga,
   mediaSignalSaga,
   sentimentSignalSaga,
+  currenciesSaga,
 } from './index'
 
 export function* rootSaga() {
   yield all([
     usersSaga(),
+    currenciesSaga(),
     widgetBarSaga(),
     authSaga(),
     eventPluseSaga(),

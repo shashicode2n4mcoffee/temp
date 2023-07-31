@@ -40,6 +40,12 @@ import {
   fetchSentimentSignalFailure,
 } from './sentimentSignalActions'
 
+import {
+  fetchCurrenciesRequest,
+  fetchCurrenciesSuccess,
+  fetchCurrenciesFailure,
+} from './currenciesActions'
+
 export default {
   fetchUsersFailure,
   fetchUsersSuccess,
@@ -65,4 +71,7 @@ export default {
   fetchSentimentSignalRequest,
   fetchSentimentSignalSuccess,
   fetchSentimentSignalFailure,
+  fetchCurrenciesRequest,
+  fetchCurrenciesSuccess,
+  fetchCurrenciesFailure,
 }

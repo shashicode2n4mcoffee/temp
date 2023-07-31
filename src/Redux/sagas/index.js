@@ -5,6 +5,7 @@ import authSaga from './authSaga'
 import eventPluseSaga from './eventPulseSaga'
 import mediaSignalSaga from './mediaSignalSaga'
 import sentimentSignalSaga from './sentimentSignalSaga'
+import currenciesSaga from './currenciesSaga'
 
 export {
   rootSaga,
@@ -14,4 +15,5 @@ export {
   eventPluseSaga,
   mediaSignalSaga,
   sentimentSignalSaga,
+  currenciesSaga,
 }
