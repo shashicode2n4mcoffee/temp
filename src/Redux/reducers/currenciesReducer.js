@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   loading: false,
-  data: [],
+  data: ['EURUSD'],
   error: null,
 }
 

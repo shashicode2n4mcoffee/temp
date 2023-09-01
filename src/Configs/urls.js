@@ -3,6 +3,7 @@ export const URLS = {
   sentimentSignal: '/sentimentSignal',
   eventDashboard: '/eventPulse',
   currencies: '/currencyPair',
+  similarNews: '/similarNews',
 }
 
 export const URL_CONTEXT = {

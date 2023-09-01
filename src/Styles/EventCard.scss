@@ -1,0 +1,23 @@
+@import './main.scss';
+
+.event-card {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.5rem;
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .title {
+      font-size: 1rem;
+    }
+  }
+}
+
+.time {
+  @include flex(row, center, center);
+  cursor: pointer;
+}

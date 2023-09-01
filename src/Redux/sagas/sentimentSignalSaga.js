@@ -11,8 +11,6 @@ function* fetchSentimentSignal() {
     const url =
       '/api/data/sentimentSignal?fromDate=2023-07-27&toDate=2023-07-28'
     const response = yield call(api.get, url)
-    console.info('=====EVENT PULSE IS CALLED')
-    // const response = { data: [] }
     yield put(fetchSentimentSignalSuccess(response.data))
   } catch (error) {
     yield put(fetchSentimentSignalFailure(error.message))

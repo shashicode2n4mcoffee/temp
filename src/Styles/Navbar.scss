@@ -1,0 +1,13 @@
+@import './mixins';
+
+.navbar-toolbar {
+  @include flex(row, space-between, center);
+}
+
+.navbar-toolbar-title {
+  @include flex(row, center, center);
+}
+
+.navbar-toolbar-logo-wrapper {
+  @include flex(row, center, center);
+}

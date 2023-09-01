@@ -11,7 +11,7 @@ export const fetchCurrenciesRequest = (data) => ({
 
 export const fetchCurrenciesSuccess = (data) => ({
   type: FETCH_CURRENCIES_SUCCESS,
-  payload: data,
+  payload: data.map((item) => item.currencyPair.replace(/-/g, '')),
 })
 
 export const fetchCurrenciesFailure = (error) => ({

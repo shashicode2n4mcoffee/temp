@@ -1,6 +1,5 @@
 import { Box } from '@mui/system'
-import React, { useEffect, useState, useRef } from 'react'
-import { AdvancedChart } from 'react-tradingview-embed'
+import React, { useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
 
 let tvScriptLoadingPromise

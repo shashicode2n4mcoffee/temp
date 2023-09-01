@@ -36,7 +36,7 @@ const ChartDataModal = ({ open, setOpen, data }) => {
           </Typography>
           <Typography variant='body1'>{data?.summary}</Typography>
           <Box sx={{ marginTop: '1rem' }} className='modal-btns'>
-            <Button variant='contained'>Like</Button>
+            {/* <Button variant='contained'>Like</Button> */}
             <Button variant='contained' onClick={handleClose}>
               Close
             </Button>

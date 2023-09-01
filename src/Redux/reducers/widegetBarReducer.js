@@ -15,12 +15,12 @@ import {
 
 const initialState = {
   loading: false,
-  selectedSymbol: CURRENCIES[0],
+  selectedSymbol: 'EURUSD',
   selectedTime: TIMEFRAME[0],
   symbolList: CURRENCIES,
   timeFrames: TIMEFRAME,
   error: null,
-  widgetList: [WIDGET_ITEMS[0], {}],
+  widgetList: [WIDGET_ITEMS[0]],
 }
 
 const widgetBarReducer = (state = initialState, action) => {

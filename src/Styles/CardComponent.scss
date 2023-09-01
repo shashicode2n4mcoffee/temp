@@ -1,0 +1,21 @@
+/* Card Styles */
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100% !important;
+  border-radius: 0.5rem;
+  background-color: #111827 !important;
+
+  .card-content {
+    padding: 0rem !important;
+    width: 100% !important;
+  }
+
+  .left-box {
+    width: 3.4rem;
+    background-color: black;
+    border-right: 4px solid #7a7b7b;
+    min-height: 300px;
+  }
+}

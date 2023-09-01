@@ -9,8 +9,6 @@ import api from '../../Api'
 function* fetchMediaSignal(data) {
   try {
     const response = yield call(api.get, data?.payload?.url || '')
-    console.info('=====EVENT PULSE IS CALLED')
-    // const response = { data: [] }
     yield put(fetchMediaSignalSuccess(response.data))
   } catch (error) {
     yield put(fetchMediaSignalFailure(error.message))

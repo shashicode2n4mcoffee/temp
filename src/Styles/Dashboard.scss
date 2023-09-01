@@ -1,0 +1,22 @@
+.dashboard {
+  padding: 0;
+}
+
+.dashboard-container {
+  margin-top: 32px;
+  background-color: #1f2937;
+  padding: 0 !important;
+  max-width: 100vw !important;
+}
+
+.grid-navbar {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+}
+
+.grid-widget-container {
+  margin-top: 2rem !important;
+  padding-bottom: 0.5rem;
+  height: 100%;
+}

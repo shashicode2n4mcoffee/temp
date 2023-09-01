@@ -1,0 +1,26 @@
+.timeframe {
+  width: 40px;
+  height: 30px;
+  border: 2px solid #374151;
+  display: inline-block;
+  text-align: center;
+  font-weight: normal;
+  background-color: white;
+  color: white;
+  padding-top: 7px;
+  cursor: pointer;
+}
+.timeframe-miditems {
+  border-right: none;
+  color: white;
+}
+.timeframe-right-enditems {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.timeframe-left-enditems {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: none;
+}

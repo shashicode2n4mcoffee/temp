@@ -14,6 +14,8 @@ import {
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 
 import NavbarDrawer from './NavbarDrawer'
+import CurrencyMenu from './CurrencyMenu'
+import TimeframeButtons from './TimeframeButtons'
 
 import { TIMEFRAME } from '../Configs/timeframe'
 import { CURRENCIES } from '../Configs/currencies'
@@ -56,53 +58,19 @@ const WidgetNavbar = ({
   return (
     <AppBar position='fixed' sx={{ top: '4rem' }} className='widget-navbar'>
       <Toolbar className='widget-navbar-toolbar'>
-        <IconButton
-          color='inherit'
-          onClick={handleMenuOpen}
-          aria-controls='currency-menu'
-          aria-haspopup='true'
-          component='div'
-        >
-          {selectedCurrency} <ArrowDropDownIcon />
-        </IconButton>
-        <Menu
-          id='currency-menu'
+        <CurrencyMenu
           anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleMenuClose}
-        >
-          {CURRENCIES.map((currency, index) => (
-            <MenuItem
-              key={index}
-              onClick={() => handleCurrencySelect(currency)}
-            >
-              {currency}
-            </MenuItem>
-          ))}
-        </Menu>
+          currencies={CURRENCIES}
+          selectedCurrency={selectedCurrency}
+          handleCurrencySelect={handleCurrencySelect}
+          handleMenuClose={handleMenuClose}
+        />
         {!isMobile ? (
-          <Box>
-            {TIMEFRAME.map((timeframe, index) => (
-              <Button
-                color='inherit'
-                key={index}
-                sx={{
-                  '&:hover': {
-                    backgroundColor: '$hover-color',
-                  },
-                  '&.Mui-focusVisible': {
-                    backgroundColor: '$hover-color',
-                  },
-                  backgroundColor:
-                    timeframe?.time === selectedTime && '$hover-color',
-                }}
-                onClick={() => handleTimeSelect(timeframe)}
-              >
-                {timeframe?.time}
-              </Button>
-            ))}
-          </Box>
+          <TimeframeButtons
+            timeframes={TIMEFRAME}
+            selectedTime={selectedTime}
+            handleTimeSelect={handleTimeSelect}
+          />
         ) : (
           <NavbarDrawer />
         )}

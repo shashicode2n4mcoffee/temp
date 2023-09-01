@@ -17,12 +17,6 @@ import {
 } from './widgetBarActions'
 
 import {
-  fetchLoginFailure,
-  fetchLoginSuccess,
-  fetchLoginRequest,
-} from './authActions'
-
-import {
   fetchEventPluseRequest,
   fetchEventPluseSuccess,
   fetchEventPluseFailure,
@@ -45,6 +39,12 @@ import {
   fetchCurrenciesSuccess,
   fetchCurrenciesFailure,
 } from './currenciesActions'
+
+import {
+  fetchLoginFailure,
+  fetchLoginSuccess,
+  fetchLoginRequest,
+} from './authActions'
 
 export default {
   fetchUsersFailure,
@@ -74,4 +74,7 @@ export default {
   fetchCurrenciesRequest,
   fetchCurrenciesSuccess,
   fetchCurrenciesFailure,
+  fetchLoginFailure,
+  fetchLoginSuccess,
+  fetchLoginRequest,
 }

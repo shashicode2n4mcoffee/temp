@@ -1,22 +1,13 @@
-// src/components/ProtectedRoute.js
-import React from 'react'
-import { Route, useNavigate } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-const ProtectedRoute = ({ component: Component, authCredientials, path }) => {
+const ProtectedRoute = ({ children, isLoggedIn }) => {
   const navigate = useNavigate()
-  if (!authCredientials?.username) {
+  if (isLoggedIn) {
     navigate('/')
     return null
   }
 
-  // If authenticated, render the component.
-  // return <Component {...rest} />
-  return <Route path={path} element={Component} />
+  return children
 }
 
-const mapStateToProps = (state) => ({
-  auth: state.auth.authCredientials,
-})
-
-export default connect(mapStateToProps)(ProtectedRoute)
+export default ProtectedRoute

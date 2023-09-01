@@ -1,0 +1,72 @@
+::-webkit-scrollbar {
+  width: 0px; /* Width of the scrollbar */
+  height: 0px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Color of the track */
+}
+
+/* Define the style for the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the thumb */
+  border-radius: 4px; /* Rounded corners for the thumb */
+}
+
+.event-pulse-container {
+  margin: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: scroll;
+  height: 100%;
+  position: relative;
+
+  .title-box {
+    margin: 1rem;
+    position: absolute;
+    top: -0.5rem;
+  }
+
+  .section-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .section-content {
+      overflow: scroll;
+      height: 240px;
+      display: flex;
+      flex-direction: column-reverse;
+      position: relative;
+
+      .event-card-container {
+        margin: 0.5rem;
+      }
+    }
+
+    .section-divider {
+      height: 3px;
+      background-color: #7a7b7b;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .section-title {
+      height: 30px;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+
+      h6 {
+        color: white;
+      }
+    }
+  }
+}
